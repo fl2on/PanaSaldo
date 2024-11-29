@@ -4,45 +4,139 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadingElement = document.getElementById("loading");
   const resultElement = document.getElementById("result");
   const saldoElement = document.getElementById("saldo");
+  const lastDateElement = document.getElementById("lastDate");
 
+  const cache = {};
+  const RATE_LIMIT_MS = 2000;
+  let lastRequestTime = 0;
+
+  let isRequestInProgress = false;
+
+  function setCookie(name, value, days = 7) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/`;
+  }
+
+  function getCookie(name) {
+    const cookies = document.cookie.split(";").map((c) => c.trim());
+    for (const cookie of cookies) {
+      const [key, value] = cookie.split("=");
+      if (key === name) {
+        return decodeURIComponent(value);
+      }
+    }
+    return null;
+  }
+
+  const savedPanapass = getCookie("panapass");
+  const savedSaldo = getCookie("saldo");
+  const savedDate = getCookie("lastDate");
+
+  if (savedPanapass) {
+    panapassInput.value = savedPanapass;
+  }
+
+  if (savedSaldo && savedDate) {
+    saldoElement.textContent = `Último saldo consultado: $${savedSaldo}`;
+    lastDateElement.textContent = `Última consulta: ${new Date(savedDate).toLocaleString()}`;
+    resultElement.classList.remove("hidden");
+  }
+
+  let debounceTimeout;
   panapassInput.addEventListener("input", (e) => {
-    e.target.value = e.target.value.replace(/[^0-9]/g, "");
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(() => {
+      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+    }, 300);
   });
 
   saldoForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const panapass = panapassInput.value.trim();
-
-    if (!panapass || panapass.length < 1) {
-      alert("Por favor, ingresa un número de Panapass válido.");
+    if (!/^\d{6,10}$/.test(panapass)) {
+      alert("Por favor, ingresa un número de Panapass válido (6-10 dígitos).");
       return;
     }
 
+    if (isRequestInProgress) {
+      alert("Ya se está procesando una consulta. Por favor, espera.");
+      return;
+    }
+
+    setCookie("panapass", panapass);
+
+    if (cache[panapass]) {
+      mostrarResultado(cache[panapass]);
+      return;
+    }
+
+    const currentTime = Date.now();
+    if (currentTime - lastRequestTime < RATE_LIMIT_MS) {
+      alert("Por favor, espera antes de realizar otra consulta.");
+      return;
+    }
+    lastRequestTime = currentTime;
+
+    consultarSaldo(panapass);
+  });
+
+  function consultarSaldo(panapass, retries = 3, delay = 1000) {
+    isRequestInProgress = true;
+
+    const submitButton = saldoForm.querySelector("button[type='submit']");
+    submitButton.disabled = true;
+    submitButton.classList.add("opacity-50", "cursor-not-allowed");
+
     loadingElement.classList.remove("hidden");
-    resultElement.classList.add("hidden"); // Ocultar cualquier resultado anterior
+    resultElement.classList.add("hidden");
 
     fetch(`https://corsproxy.io/?http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Error al conectar con el servidor.");
+          throw new Error(`Error del servidor: ${response.status}`);
         }
         return response.json();
       })
       .then((data) => {
-        loadingElement.classList.add("hidden");
-
-        if (data.success) {
-          resultElement.classList.remove("hidden");
-          saldoElement.textContent = `Saldo disponible: $${data.saldo}`;
-        } else {
-          alert("No se encontró información para el número de Panapass ingresado.");
+        if (!data.success) {
+          throw new Error(data.message || "No se encontró información.");
         }
+
+        const currentDate = new Date();
+        cache[panapass] = { ...data, date: currentDate };
+        setCookie("saldo", data.saldo);
+        setCookie("lastDate", currentDate.toISOString());
+        mostrarResultado({ ...data, date: currentDate });
       })
       .catch((error) => {
+        if (retries > 0) {
+          setTimeout(() => consultarSaldo(panapass, retries - 1, delay * 2), delay);
+        } else {
+          alert(`Error al consultar el saldo: ${error.message}`);
+        }
+      })
+      .finally(() => {
+        isRequestInProgress = false;
+        submitButton.disabled = false;
+        submitButton.classList.remove("opacity-50", "cursor-not-allowed");
         loadingElement.classList.add("hidden");
-        alert("Ocurrió un error al consultar el saldo. Inténtalo nuevamente más tarde.");
-        console.error(error);
       });
-  });
+  }
+
+  function mostrarResultado(data) {
+    loadingElement.classList.add("hidden");
+    resultElement.classList.remove("hidden");
+    saldoElement.textContent = `Saldo disponible: $${data.saldo}`;
+    lastDateElement.textContent = `Última consulta: ${new Date(data.date).toLocaleString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true,
+    })}`;
+  }
 });
