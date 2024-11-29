@@ -14,7 +14,7 @@ La página permite consultar el saldo del **Panapass** de manera fácil, utiliza
 
 ## Screenshot
 
-![image](https://github.com/user-attachments/assets/1f93ccc9-84fa-49ce-bd18-4b457efc72e1)
+![image](https://github.com/user-attachments/assets/0da3f090-4939-47ef-bce8-36ad4ca6867b)
 
 ## Tecnologías Usadas
 
