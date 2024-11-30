@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     consultarSaldo(panapass);
   });
 
-  function consultarSaldo(panapass, retries = 3, delay = 1000) {
+  function consultarSaldo(panapass, retries = 8, delay = 1000) {
     isRequestInProgress = true;
 
     const submitButton = saldoForm.querySelector("button[type='submit']");
