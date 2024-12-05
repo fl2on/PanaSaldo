@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     consultarSaldo(panapass);
   });
 
-  function consultarSaldo(panapass, retries = 8, delay = 1000) {
+  function consultarSaldo(panapass, retries = 5, delay = 1000) {
     isRequestInProgress = true;
 
     const submitButton = saldoForm.querySelector("button[type='submit']");
@@ -92,13 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadingElement.classList.remove("hidden");
     resultElement.classList.add("hidden");
 
-    fetch(`https://corsproxy.io/?http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`, {
-      headers: {
-        "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 13; Build/TP1A.220624.014)",
-        "Connection": "Keep-Alive",
-        "Accept-Encoding": "gzip"
-      }
-    })
+    fetch(`https://corsproxy.io/?http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Error del servidor: ${response.status}`);
