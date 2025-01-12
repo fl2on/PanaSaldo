@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cache = {};
   const RATE_LIMIT_MS = 2000;
   let lastRequestTime = 0;
-
   let isRequestInProgress = false;
 
   function setCookie(name, value, days = 7) {
@@ -29,6 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return null;
   }
 
+  function getQueryParam(param) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(param);
+  }
+
+  const urlPanapass = getQueryParam("panapass");
+  const carMode = getQueryParam("carmode") === "true";
   const savedPanapass = getCookie("panapass");
   const savedSaldo = getCookie("saldo");
   const savedDate = getCookie("lastDate");
@@ -41,6 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
     saldoElement.textContent = `Último saldo consultado: $${savedSaldo}`;
     lastDateElement.textContent = `Última consulta: ${new Date(savedDate).toLocaleString()}`;
     resultElement.classList.remove("hidden");
+    if (carMode) {
+      speakText(`Tu último saldo es ${savedSaldo} dólares.`);
+    }
+  }
+
+  if (urlPanapass && carMode) {
+    panapassInput.value = urlPanapass;
+    consultarSaldo(urlPanapass);
   }
 
   let debounceTimeout;
@@ -144,5 +158,17 @@ document.addEventListener("DOMContentLoaded", () => {
       second: "numeric",
       hour12: true,
     })}`;
+    if (carMode) {
+      speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
+    }
+  }
+
+  function speakText(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "es-ES";
+    speech.pitch = 1;
+    speech.rate = 1;
+    speech.volume = 1;
+    window.speechSynthesis.speak(speech);
   }
 });
