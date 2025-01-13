@@ -32,7 +32,30 @@ La página permite consultar el saldo del **Panapass** de manera fácil, utiliza
 3. Se realizará una solicitud a la API para obtener el saldo de tu pase.
 4. El saldo será mostrado en la pantalla.
 
-2. Abre el archivo `index.html` en tu navegador para ver la página en funcionamiento.
+## Uso Avanzado: Consulta Automática con Parámetros de URL
+
+Puedes acceder a la funcionalidad de consulta automática y dictado de saldo utilizando parámetros en la URL. Aquí tienes algunos ejemplos de uso:
+
+### Consulta Automática del Saldo
+Para que el saldo se consulte automáticamente al abrir la página, incluye el número de **Panapass** como parámetro en la URL:
+
+```bash
+https://fl2on.github.io/PanaSaldo/?panapass=211870
+```
+
+### Activar Modo de Carro con Dictado por Voz
+Si deseas habilitar el dictado por voz (ideal para uso en vehículos), agrega el parámetro `&carmode=true`:
+
+```bash
+https://fl2on.github.io/PanaSaldo/?panapass=211870&carmode=true
+```
+
+- **`panapass`**: Especifica el número del pase (6-10 dígitos).
+- **`carmode`**: Si se establece como `true`, activa la funcionalidad de dictado por voz del saldo consultado.
+
+### Notas:
+- Si no incluyes el parámetro `panapass`, la consulta automática no se realizará.
+- El dictado por voz solo se habilita si el modo de carro (`carmode`) está configurado como `true`.
 
 ## Licencia
 
