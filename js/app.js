@@ -47,9 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     saldoElement.textContent = `Último saldo consultado: $${savedSaldo}`;
     lastDateElement.textContent = `Última consulta: ${new Date(savedDate).toLocaleString()}`;
     resultElement.classList.remove("hidden");
-    if (carMode) {
-      speakText(`Tu último saldo es ${savedSaldo} dólares.`);
-    }
   }
 
   if (urlPanapass && carMode) {
