@@ -43,19 +43,9 @@ Para que el saldo se consulte automáticamente al abrir la página, incluye el n
 https://fl2on.github.io/PanaSaldo/?panapass=211870
 ```
 
-### Activar Modo de Carro con Dictado por Voz
-Si deseas habilitar el dictado por voz (ideal para uso en vehículos), agrega el parámetro `&carmode=true`:
-
-```bash
-https://fl2on.github.io/PanaSaldo/?panapass=211870&carmode=true
-```
-
-- **`panapass`**: Especifica el número del pase (6-10 dígitos).
-- **`carmode`**: Si se establece como `true`, activa la funcionalidad de dictado por voz del saldo consultado.
-
 ### Notas:
 - Si no incluyes el parámetro `panapass`, la consulta automática no se realizará.
-- El dictado por voz solo se habilita si el modo de carro (`carmode`) está configurado como `true`.
+- El dictado por voz solo se habilita si el agente del navegador es android.
 
 ## Licencia
 
