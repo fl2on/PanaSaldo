@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (urlPanapass && carMode) {
         panapassInput.value = urlPanapass;
-        consultarSaldo(urlPanapass);
+        consultarSaldo(urlPanapass, carMode);
     }
 
     let debounceTimeout;
@@ -127,11 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
             setCookie("lastDate", currentDate.toISOString());
             mostrarResultado({ ...data, date: currentDate });
 
-            setTimeout(() => {
-                 if (isAndroid()) {
-                    speakText(`Tu saldo disponible es $${data.saldo}.`);
-                }            
-            }, 100);
+            if (carMode) {
+                setTimeout(() => {
+                    speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
+                }, 100);
+            }
         })
         .catch((error) => {
             if (retries > 0) {
@@ -180,9 +180,5 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("Tu navegador no soporta la síntesis de voz.");
         }
-    }
-
-     function isAndroid() {
-        return /android/i.test(navigator.userAgent);
     }
 });
