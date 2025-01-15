@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (urlPanapass && carMode) {
         panapassInput.value = urlPanapass;
-        consultarSaldo(urlPanapass);
+        consultarSaldo(urlPanapass, carMode);
     }
 
     let debounceTimeout;
@@ -127,9 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
             setCookie("lastDate", currentDate.toISOString());
             mostrarResultado({ ...data, date: currentDate });
 
-            setTimeout(() => {
-                speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
-            }, 100);
+            if (carMode) {
+                setTimeout(() => {
+                    speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
+                }, 100);
+            }
         })
         .catch((error) => {
             if (retries > 0) {
