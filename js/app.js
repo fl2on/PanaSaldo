@@ -104,48 +104,46 @@ document.addEventListener("DOMContentLoaded", () => {
         resultElement.classList.add("hidden");
 
         fetch(`https://corsproxy.io/?url=http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`, {
-                headers: {
-                    "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 13; Build/TP1A.220624.014)",
-                    "Connection": "Keep-Alive",
-                    "Accept-Encoding": "gzip"
-                }
-            })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Error del servidor: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                if (!data.success) {
-                    throw new Error(data.message || "No se encontró información.");
-                }
+            headers: {
+                "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 13; Build/TP1A.220624.014)",
+                "Connection": "Keep-Alive",
+                "Accept-Encoding": "gzip"
+            }
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Error del servidor: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            if (!data.success) {
+                throw new Error(data.message || "No se encontró información.");
+            }
 
-                const currentDate = new Date();
-                cache[panapass] = {
-                    ...data,
-                    date: currentDate
-                };
-                setCookie("saldo", data.saldo);
-                setCookie("lastDate", currentDate.toISOString());
-                mostrarResultado({
-                    ...data,
-                    date: currentDate
-                });
-            })
-            .catch((error) => {
-                if (retries > 0) {
-                    setTimeout(() => consultarSaldo(panapass, retries - 1, delay * 2), delay);
-                } else {
-                    alert(`Error al consultar el saldo: ${error.message}`);
-                }
-            })
-            .finally(() => {
-                isRequestInProgress = false;
-                submitButton.disabled = false;
-                submitButton.classList.remove("opacity-50", "cursor-not-allowed");
-                loadingElement.classList.add("hidden");
-            });
+            const currentDate = new Date();
+            cache[panapass] = { ...data, date: currentDate };
+            setCookie("saldo", data.saldo);
+            setCookie("lastDate", currentDate.toISOString());
+            mostrarResultado({ ...data, date: currentDate });
+
+            setTimeout(() => {
+                speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
+            }, 100);
+        })
+        .catch((error) => {
+            if (retries > 0) {
+                setTimeout(() => consultarSaldo(panapass, retries - 1, delay * 2), delay);
+            } else {
+                alert(`Error al consultar el saldo: ${error.message}`);
+            }
+        })
+        .finally(() => {
+            isRequestInProgress = false;
+            submitButton.disabled = false;
+            submitButton.classList.remove("opacity-50", "cursor-not-allowed");
+            loadingElement.classList.add("hidden");
+        });
     }
 
     function mostrarResultado(data) {
@@ -153,17 +151,14 @@ document.addEventListener("DOMContentLoaded", () => {
         resultElement.classList.remove("hidden");
         saldoElement.textContent = `Saldo disponible: $${data.saldo}`;
         lastDateElement.textContent = `Última consulta: ${new Date(data.date).toLocaleString("es-ES", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-    })}`;
-        if (carMode) {
-            speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
-        }
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: true,
+        })}`;
     }
 
     function speakText(text) {
