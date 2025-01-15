@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const urlPanapass = getQueryParam("panapass");
-    const carMode = getQueryParam("carmode") === "true";
     const savedPanapass = getCookie("panapass");
     const savedSaldo = getCookie("saldo");
     const savedDate = getCookie("lastDate");
@@ -49,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
         resultElement.classList.remove("hidden");
     }
 
-    if (urlPanapass && carMode) {
+    if (urlPanapass) {
         panapassInput.value = urlPanapass;
-        consultarSaldo(urlPanapass, carMode);
+        consultarSaldo(urlPanapass);  // Consulta saldo directamente
     }
 
     let debounceTimeout;
@@ -127,11 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
             setCookie("lastDate", currentDate.toISOString());
             mostrarResultado({ ...data, date: currentDate });
 
-            if (carMode) {
-                setTimeout(() => {
-                    speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
-                }, 100);
-            }
         })
         .catch((error) => {
             if (retries > 0) {
@@ -161,6 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
             second: "numeric",
             hour12: true,
         })}`;
+
+        if (isAndroid()) {
+            speakText(`Tu saldo disponible es $${data.saldo}.`);
+        }
     }
 
     function speakText(text) {
@@ -180,5 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("Tu navegador no soporta la síntesis de voz.");
         }
+    }
+
+    function isAndroid() {
+        return /android/i.test(navigator.userAgent);
     }
 });
