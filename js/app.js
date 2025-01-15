@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (urlPanapass) {
         panapassInput.value = urlPanapass;
-        consultarSaldo(urlPanapass);  // Consulta saldo directamente
+        consultarSaldo(urlPanapass);
     }
 
     let debounceTimeout;
