@@ -104,48 +104,54 @@ document.addEventListener("DOMContentLoaded", () => {
         resultElement.classList.add("hidden");
 
         fetch(`https://corsproxy.io/?url=http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`, {
-            headers: {
-                "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 13; Build/TP1A.220624.014)",
-                "Connection": "Keep-Alive",
-                "Accept-Encoding": "gzip"
-            }
-        })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`Error del servidor: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            if (!data.success) {
-                throw new Error(data.message || "No se encontró información.");
-            }
+                headers: {
+                    "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 13; Build/TP1A.220624.014)",
+                    "Connection": "Keep-Alive",
+                    "Accept-Encoding": "gzip"
+                }
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Error del servidor: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                if (!data.success) {
+                    throw new Error(data.message || "No se encontró información.");
+                }
 
-            const currentDate = new Date();
-            cache[panapass] = { ...data, date: currentDate };
-            setCookie("saldo", data.saldo);
-            setCookie("lastDate", currentDate.toISOString());
-            mostrarResultado({ ...data, date: currentDate });
+                const currentDate = new Date();
+                cache[panapass] = {
+                    ...data,
+                    date: currentDate
+                };
+                setCookie("saldo", data.saldo);
+                setCookie("lastDate", currentDate.toISOString());
+                mostrarResultado({
+                    ...data,
+                    date: currentDate
+                });
 
-            if (carMode) {
-                setTimeout(() => {
-                    speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
-                }, 100);
-            }
-        })
-        .catch((error) => {
-            if (retries > 0) {
-                setTimeout(() => consultarSaldo(panapass, retries - 1, delay * 2), delay);
-            } else {
-                alert(`Error al consultar el saldo: ${error.message}`);
-            }
-        })
-        .finally(() => {
-            isRequestInProgress = false;
-            submitButton.disabled = false;
-            submitButton.classList.remove("opacity-50", "cursor-not-allowed");
-            loadingElement.classList.add("hidden");
-        });
+                if (carMode) {
+                    setTimeout(() => {
+                        speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
+                    }, 100);
+                }
+            })
+            .catch((error) => {
+                if (retries > 0) {
+                    setTimeout(() => consultarSaldo(panapass, retries - 1, delay * 2), delay);
+                } else {
+                    alert(`Error al consultar el saldo: ${error.message}`);
+                }
+            })
+            .finally(() => {
+                isRequestInProgress = false;
+                submitButton.disabled = false;
+                submitButton.classList.remove("opacity-50", "cursor-not-allowed");
+                loadingElement.classList.add("hidden");
+            });
     }
 
     function mostrarResultado(data) {
