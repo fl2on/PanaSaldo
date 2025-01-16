@@ -36,8 +36,8 @@ La página permite consultar el saldo del **Panapass** de manera fácil, utiliza
 
 Puedes acceder a la funcionalidad de consulta automática y dictado de saldo utilizando parámetros en la URL. Aquí tienes algunos ejemplos de uso:
 
-### Consulta Automática del Saldo
-Para que el saldo se consulte automáticamente al abrir la página, incluye el número de **Panapass** como parámetro en la URL:
+### Consulta Automática del Saldo y Dictado por Voz
+Para que el saldo se consulte automáticamente al abrir la página y activar el dictado por voz, incluye el número de **Panapass** como parámetro en la URL:
 
 ```bash
 https://fl2on.github.io/PanaSaldo/?panapass=211870
