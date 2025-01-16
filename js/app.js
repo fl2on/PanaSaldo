@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastRequestTime = 0;
     let isRequestInProgress = false;
 
+    const invisibleButton = document.createElement("button");
+    invisibleButton.style.display = "none";
+    invisibleButton.addEventListener("click", () => {
+        speakText(`Tu saldo disponible es ${saldoElement.textContent.split(":")[1]}`);
+    });
+    document.body.appendChild(invisibleButton);
+
     function setCookie(name, value, days = 7) {
         const date = new Date();
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -25,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return decodeURIComponent(value);
             }
         }
-        return null;
+ return null; 
     }
 
     function getQueryParam(param) {
@@ -34,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const urlPanapass = getQueryParam("panapass");
-    const carMode = getQueryParam("carmode") === "true";
     const savedPanapass = getCookie("panapass");
     const savedSaldo = getCookie("saldo");
     const savedDate = getCookie("lastDate");
@@ -49,9 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         resultElement.classList.remove("hidden");
     }
 
-    if (urlPanapass && carMode) {
+    if (urlPanapass) {
         panapassInput.value = urlPanapass;
-        consultarSaldo(urlPanapass);
+        setTimeout(() => {
+            consultarSaldo(urlPanapass);
+        }, 100);
     }
 
     let debounceTimeout;
@@ -96,10 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function consultarSaldo(panapass, retries = 8, delay = 1000) {
         isRequestInProgress = true;
 
-        const submitButton = saldoForm.querySelector("button[type='submit']");
-        submitButton.disabled = true;
-        submitButton.classList.add("opacity-50", "cursor-not-allowed");
-
         loadingElement.classList.remove("hidden");
         resultElement.classList.add("hidden");
 
@@ -127,9 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
             setCookie("lastDate", currentDate.toISOString());
             mostrarResultado({ ...data, date: currentDate });
 
-            setTimeout(() => {
-                speakText(`Tu saldo disponible es ${data.saldo} dólares.`);
-            }, 100);
+            if (urlPanapass) {
+                invisibleButton.click();
+            }
         })
         .catch((error) => {
             if (retries > 0) {
@@ -140,8 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .finally(() => {
             isRequestInProgress = false;
-            submitButton.disabled = false;
-            submitButton.classList.remove("opacity-50", "cursor-not-allowed");
             loadingElement.classList.add("hidden");
         });
     }
@@ -170,8 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
             utterance.volume = 1;
 
             utterance.onerror = (event) => {
-                console.error("Error en la síntesis de voz:", event.error);
-                alert("No se pudo realizar la síntesis de voz. Intenta nuevamente.");
+                alert(`No se pudo realizar la síntesis de voz. Intenta nuevamente. Error: ${event.error}`);
             };
 
             window.speechSynthesis.speak(utterance);
