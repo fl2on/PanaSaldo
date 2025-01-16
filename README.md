@@ -45,7 +45,7 @@ https://fl2on.github.io/PanaSaldo/?panapass=211870
 
 ### Notas:
 - Si no incluyes el parámetro `panapass`, la consulta automática no se realizará.
-- El dictado por voz solo se habilita si el agente del navegador es android.
+- El dictado por voz solo se habilita si el parametro de `panapass` se encuentra presente en el url.
 
 ## Licencia
 
