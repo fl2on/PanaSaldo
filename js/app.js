@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return decodeURIComponent(value);
             }
         }
- return null; 
+        return null;
     }
 
     function getQueryParam(param) {
@@ -108,44 +108,50 @@ document.addEventListener("DOMContentLoaded", () => {
         resultElement.classList.add("hidden");
 
         fetch(`https://corsproxy.io/?url=http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`, {
-            headers: {
-                "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 13; Build/TP1A.220624.014)",
-                "Connection": "Keep-Alive",
-                "Accept-Encoding": "gzip"
-            }
-        })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`Error del servidor: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            if (!data.success) {
-                throw new Error(data.message || "No se encontró información.");
-            }
+                headers: {
+                    "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 13; Build/TP1A.220624.014)",
+                    "Connection": "Keep-Alive",
+                    "Accept-Encoding": "gzip"
+                }
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Error del servidor: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                if (!data.success) {
+                    throw new Error(data.message || "No se encontró información.");
+                }
 
-            const currentDate = new Date();
-            cache[panapass] = { ...data, date: currentDate };
-            setCookie("saldo", data.saldo);
-            setCookie("lastDate", currentDate.toISOString());
-            mostrarResultado({ ...data, date: currentDate });
+                const currentDate = new Date();
+                cache[panapass] = {
+                    ...data,
+                    date: currentDate
+                };
+                setCookie("saldo", data.saldo);
+                setCookie("lastDate", currentDate.toISOString());
+                mostrarResultado({
+                    ...data,
+                    date: currentDate
+                });
 
-            if (urlPanapass) {
-                invisibleButton.click();
-            }
-        })
-        .catch((error) => {
-            if (retries > 0) {
-                setTimeout(() => consultarSaldo(panapass, retries - 1, delay * 2), delay);
-            } else {
-                alert(`Error al consultar el saldo: ${error.message}`);
-            }
-        })
-        .finally(() => {
-            isRequestInProgress = false;
-            loadingElement.classList.add("hidden");
-        });
+                if (urlPanapass) {
+                    invisibleButton.click();
+                }
+            })
+            .catch((error) => {
+                if (retries > 0) {
+                    setTimeout(() => consultarSaldo(panapass, retries - 1, delay * 2), delay);
+                } else {
+                    alert(`Error al consultar el saldo: ${error.message}`);
+                }
+            })
+            .finally(() => {
+                isRequestInProgress = false;
+                loadingElement.classList.add("hidden");
+            });
     }
 
     function mostrarResultado(data) {
