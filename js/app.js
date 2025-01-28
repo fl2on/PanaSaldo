@@ -169,21 +169,19 @@ document.addEventListener("DOMContentLoaded", () => {
         })}`;
     }
 
+    const Speech = window.speechSynthesis;
+
     function speakText(text) {
-        if ('SpeechSynthesisUtterance' in window && window.speechSynthesis) {
+        if (Speech && Speech.getVoices) {
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = "es-ES";
-            utterance.pitch = 1;
-            utterance.rate = 1;
-            utterance.volume = 1;
+            utterance.lang = "es-ES"; // Idioma español
+            utterance.pitch = 1;      // Tono (rango: 0 a 2)
+            utterance.rate = 1;       // Velocidad (rango: 0.1 a 10)
+            utterance.volume = 1;     // Volumen (rango: 0 a 1)
 
-            utterance.onerror = (event) => {
-                alert(`No se pudo realizar la síntesis de voz. Intenta nuevamente. Error: ${event.error}`);
-            };
-
-            window.speechSynthesis.speak(utterance);
+            Speech.speak(utterance);
         } else {
-            alert("Tu navegador no soporta la síntesis de voz.");
+            alert("Text-to-Speech no está disponible en este navegador.");
         }
     }
 });
