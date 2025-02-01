@@ -1,78 +1,142 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="font-size: 85%;">
 <head>
-  <!-- Meta -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PanaSaldo</title>
-  <meta name="description" content="Consulta tu Saldo - Panapass">
-  <!-- Open Graph (OG) meta tags -->
-  <meta property="og:title" content="PanaSaldo">
-  <meta property="og:description" content="Consulta tu Saldo - Panapass">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fl2on.github.io/PanaSaldo/">
-  <meta property="og:image" content="favicon.png">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-  <!-- Additional meta tags for SEO -->
-  <meta name="robots" content="index, follow">
-  <meta name="keywords" content="panapass, saldo, panasaldo, panama">
-  <meta name="author" content="fl2on">
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- TTs -->
-  <script src="https://cdn.jsdelivr.net/npm/speak-tts@2.0.8/lib/speak-tts.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.70">
+    <title>PanaSaldo - Consulta de Saldo Panapass</title>
+    <meta name="description" content="Consulta tu saldo Panapass de forma rápida y segura">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <!-- Header -->
-  <header class="p-6 bg-gradient-to-b from-blue-900 to-blue-800">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-white text-2xl font-bold flex items-center">
-        <svg class="w-6 h-6 mr-2 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13 16h-1v-4H9l4-8v6h3l-3 6z"></path>
-          <path d="M0 0h24v24H0z" fill="none"></path>
-        </svg>
-        PanaSaldo
-      </h1>
-    </div>
-  </header>
-  <!-- Main Content -->
-  <main class="container mx-auto p-6 text-white">
-    <section class="text-center my-10">
-      <h2 class="text-3xl font-bold">Consulta tu Saldo</h2>
-      <p class="mt-4">Introduce tu número de Panapass para consultar tu saldo de manera rápida y sencilla.</p>
-    </section>
-    <section class="max-w-lg mx-auto bg-blue-800 p-6 rounded-lg shadow-lg">
-      <form id="saldoForm" class="flex flex-col items-center">
-        <input
-          id="panapassInput"
-          type="text"
-          placeholder="Número de Panapass"
-          class="w-full px-4 py-2 rounded mb-4 bg-gray-100 text-gray-900 focus:outline-none focus:ring focus:ring-blue-500"
-          required
-        />
-        <button
-          type="submit"
-          class="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 flex items-center justify-center"
-        >
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 9l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-          Consultar Saldo
-        </button>
-      </form>
-      <div id="loading" class="mt-6 text-center hidden">
-        <div class="spinner mx-auto"></div>
-        <p class="mt-4 text-gray-300">Consultando, por favor espera...</p>
-      </div>
-
-      <div id="result" class="mt-6 text-center hidden">
-        <p id="saldo" class="text-xl font-bold"></p>
-        <p id="lastDate" class="text-sm text-gray-300 mt-2"></p>
-      </div>
-    </section>
-  </main>
-  <script src="js/app.js"></script>
+<body class="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+    <div class="container mx-auto px-4 py-6 flex flex-col min-h-screen">
+        <!-- Logo & Header -->
+        <header class="mb-8">
+            <div class="flex flex-col items-center justify-center space-y-3">
+                <div class="w-12 h-12 bg-[#4F46E5] rounded-xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform duration-200">
+                    <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM20 8H4V6H20V8Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold text-white tracking-tight">
+                    PanaSaldo
+                </h1>
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-grow flex flex-col items-center justify-center w-full max-w-3xl mx-auto">
+            <!-- Input Card -->
+            <div class="w-full bg-gray-800 rounded-2xl shadow-xl p-6 mb-6 border border-gray-700">
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold text-white mb-2">Consulta tu Saldo</h2>
+                    <p class="text-gray-400 text-sm">Ingresa tu número de Panapass para consultar tu saldo</p>
+                </div>
+                <form id="saldoForm" class="space-y-4">
+                    <div class="space-y-2">
+                        <label for="panapassInput" class="block text-sm font-medium text-gray-300">
+                            Número de Panapass
+                        </label>
+                        <div class="relative">
+                            <input
+                                id="panapassInput"
+                                type="text"
+                                placeholder="123456789"
+                                class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent transition-colors duration-200"
+                                required
+                                maxlength="10"
+                            />
+                            <div class="absolute inset-y-0 right-2 flex items-center pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7h3a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V9a2 2 0 012-2h3m3-3h3a2 2 0 012 2v3M9 3h3a2 2 0 012 2v3M9 21h3m9-3H3"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] hover:from-[#4338CA] hover:to-[#6D28D9] text-white font-bold py-2 px-3 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98] shadow-md relative"
+                    >
+                        <span class="flex items-center justify-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <span>Consultar Saldo</span>
+                        </span>
+                        <div class="loading absolute inset-0 flex items-center justify-center bg-[#4F46E5] rounded-lg hidden">
+                            <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        </div>
+                    </button>
+                </form>
+            </div>
+            <!-- Result Card (Hidden by default) -->
+            <div id="resultSection" class="w-full hidden animate-fade-in">
+                <div class="bg-gray-800 rounded-2xl shadow-xl p-6 border border-gray-700">
+                    <div class="text-center space-y-3">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#4F46E5] mb-3">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <p id="saldo" class="text-3xl font-bold text-white">$150.00</p>
+                        <p id="lastDate" class="text-xs text-gray-400">Última actualización: 30/01/2025</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Grid Layout for Chart and Additional Info -->
+            <div class="grid-layout w-full">
+                <!-- Chart Section -->
+                <div id="chartSection" class="hidden">
+                    <div class="chart-container">
+                        <canvas id="saldoChart"></canvas>
+                    </div>
+                </div>
+                <!-- Información Adicional -->
+                <div class="additional-info">
+                    <h3 class="text-lg font-semibold text-white mb-3">Información Adicional</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Último saldo consultado -->
+                        <div class="bg-gray-700 p-4 rounded-lg shadow-md">
+                            <p class="text-gray-400 text-sm"><strong>Último saldo consultado:</strong></p>
+                            <p id="availableBalance" class="text-xl font-bold text-white">$0.00</p>
+                        </div>
+                        <!-- Fecha de última consulta -->
+                        <div class="bg-gray-700 p-4 rounded-lg shadow-md">
+                            <p class="text-gray-400 text-sm"><strong>Fecha de última consulta:</strong></p>
+                            <p id="lastConsultDate" class="text-base text-white">No disponible</p>
+                        </div>
+                        <!-- Historial de saldos -->
+                        <div class="col-span-full bg-gray-700 p-4 rounded-lg shadow-md">
+                            <p class="text-gray-400 text-sm"><strong>Historial de saldos:</strong></p>
+                            <div class="max-h-48 overflow-y-auto pr-2 mt-3">
+                                <ul id="recentTransactions" class="text-gray-400 text-sm">
+                                    <!-- Las transacciones se agregarán dinámicamente -->
+                                </ul>
+                            </div>
+                            <button id="showMoreTransactions" class="w-full mt-3 px-3 py-2 bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98] shadow-md">
+                                Ver más transacciones
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Saved Panapass Section -->
+            <div id="savedPanapassSection" class="w-full mt-6">
+                <h3 class="text-lg font-semibold text-white mb-3">Panapass Guardados</h3>
+                <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-700">
+                    <ul id="savedPanapassList" class="divide-y divide-gray-700">
+                        <!-- Items will be added dynamically -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer class="mt-6 text-center">
+            <p class="text-xs text-gray-400">&copy; 2023 PanaSaldo. Todos los derechos reservados.</p>
+        </footer>
+		</div>
+    <script src="js/script.js"></script>
 </body>
 </html>

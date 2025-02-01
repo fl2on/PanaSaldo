@@ -1,19 +1,340 @@
-    body {
-      background: #101828;
-    }
-    .spinner {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #4f46e5;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin {
-      0% {
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-fade-in {
+  animation: fadeIn 0.21s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 3.5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #4F46E5;
+  border-radius: 3.5px;
+  border: 1.4px solid rgba(255, 255, 255, 0.07);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
+}
+
+/* Scroll para elementos específicos */
+.max-h-64::-webkit-scrollbar {
+  width: 4.2px;
+}
+.max-h-64::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.035);
+  border-radius: 2.1px;
+}
+.max-h-64::-webkit-scrollbar-thumb {
+  background: #4F46E5;
+  border-radius: 2.1px;
+  border: 0.7px solid rgba(255, 255, 255, 0.07);
+}
+.max-h-64::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
+}
+
+/* Loading Animation */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: -0.525rem;
+  border: 1.4px solid #7C3AED;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Input Styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  transition: background-color 3500s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 700px #374151 inset;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border: 0.7px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+  h1 {
+    font-size: 1.3125rem;
+  }
+  h2 {
+    font-size: 1.05rem;
+  }
+  #saldo {
+    font-size: 1.4rem;
+  }
+  .rounded-3xl {
+    border-radius: 1.05rem;
+  }
+}
+
+/* Focus States */
+.focus-visible:focus {
+  outline: none;
+  box-shadow: 0 0 0 2.1px rgba(124, 58, 237, 0.35);
+}
+
+/* Saved Panapass List Items */
+#savedPanapassList li {
+  transition: all 0.14s ease;
+}
+#savedPanapassList li:hover {
+  background-color: rgba(255, 255, 255, 0.035);
+}
+#savedPanapassList button {
+  transition: all 0.14s ease;
+}
+#savedPanapassList button:hover {
+  transform: translateY(-0.7px);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Card Shadows */
+.shadow-2xl {
+  box-shadow: 0 17.5px 35px -8.4px rgba(0, 0, 0, 0.175);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(to right, #4F46E5, #7C3AED);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Chart Container */
+.chart-container {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border: 0.7px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.7rem;
+  padding: 0.7rem;
+  margin-top: 1.4rem;
+}
+
+/* Additional Info Section */
+.additional-info {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border: 0.7px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.7rem;
+  padding: 1.05rem;
+  margin-top: 1.4rem;
+}
+.additional-info h3 {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.05rem;
+}
+.additional-info p {
+  color: #D1D5DB;
+  margin-bottom: 0.35rem;
+}
+.additional-info ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.additional-info ul li {
+  padding: 0.525rem 0.7rem;
+  background: rgba(255, 255, 255, 0.035);
+  border-radius: 0.35rem;
+  margin-bottom: 0.35rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.14s ease;
+}
+.additional-info ul li:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+.additional-info ul li span {
+  font-size: 0.63rem;
+  color: #D1D5DB;
+}
+.additional-info ul li span:first-child {
+  font-weight: bold;
+  color: white;
+}
+
+/* Result Card */
+#resultSection {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border: 0.7px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.7rem;
+  padding: 1.05rem;
+  margin-top: 1.4rem;
+}
+#resultSection .text-center {
+  text-align: center;
+}
+#resultSection .text-center p {
+  color: white;
+  font-size: 0.875rem;
+  margin-bottom: 0.35rem;
+}
+#resultSection .text-center p#saldo {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+}
+#resultSection .text-center p#lastDate {
+  font-size: 0.63rem;
+  color: #D1D5DB;
+}
+
+/* Estilo para el botón "Ver más transacciones" */
+#showMoreTransactions {
+  background: linear-gradient(to right, #4F46E5, #7C3AED);
+  color: white;
+  font-weight: bold;
+  padding: 0.525rem 1.05rem;
+  border-radius: 0.525rem;
+  transition: all 0.14s ease;
+  width: 100%;
+  text-align: center;
+  margin-top: 0.7rem;
+}
+#showMoreTransactions:hover {
+  background: linear-gradient(to right, #4338CA, #6D28D9);
+  transform: translateY(-0.7px);
+}
+#showMoreTransactions:active {
+  transform: translateY(0);
+}
+
+/* Estilo para la lista de transacciones recientes */
+#recentTransactions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#recentTransactions li {
+  padding: 0.525rem 0.7rem;
+  background: rgba(255, 255, 255, 0.035);
+  border-radius: 0.35rem;
+  margin-bottom: 0.35rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.14s ease;
+}
+#recentTransactions li:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+#recentTransactions li span {
+  font-size: 0.63rem;
+  color: #D1D5DB;
+}
+#recentTransactions li span:first-child {
+  font-weight: bold;
+  color: white;
+}
+
+/* Estilo para el scroll en el historial de saldos */
+.max-h-64 {
+  max-height: 11.2rem;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.pr-2 {
+  padding-right: 0.35rem;
+}
+
+/* Animación de carga */
+@keyframes spin {
+    0% {
         transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
     }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Ocultar el texto "Consultar Saldo" durante la carga */
+button.loading span {
+    display: none;
+}
+
+/* Añadir el círculo giratorio */
+button.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border: 3px solid #7C3AED;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Asegurarse de que el botón tenga posición relativa y un tamaño mínimo */
+button[type="submit"] {
+    position: relative;
+    min-width: 120px; /* Tamaño mínimo para evitar que el botón se encoja */
+}
