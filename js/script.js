@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="panapass-number-col">
                   <span class="panapass-number">${panapass}</span>
-                  <p class="text-xs text-gray-500 last-consult-info" data-panapass="${panapass}">Cargando última consulta...</p>
+                  <p class="text-xs text-gray-500 last-consult-info" data-panapass="${panapass}">Cargando Ãºltima consulta...</p>
                 </div>
                 <div class="panapass-actions flex space-x-2">
                   <button class="panapass-actions-btn" data-action="consult" data-panapass="${panapass}">
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
               `;
             savedPanapassList.appendChild(li);
 
-            // Cargar la última fecha de consulta y el último saldo para este Panapass (ahora actualizado dentro del item)
+            // Cargar la Ãºltima fecha de consulta y el Ãºltimo saldo para este Panapass (ahora actualizado dentro del item)
             loadLastConsultInfoInList(
                 panapass,
                 li.querySelector(".last-consult-info")
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Función para cargar solo la última info de consulta (fecha y saldo) en la lista
+    // FunciÃ³n para cargar solo la Ãºltima info de consulta (fecha y saldo) en la lista
     function loadLastConsultInfoInList(panapass, infoElement) {
         const lastBalance = localStorage.getItem(`lastBalance_${panapass}`);
         const lastConsultDateSaved = localStorage.getItem(
@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
             posts.forEach((post) => {
                 const titleElement = post.querySelector("h3 a");
                 const link = titleElement ? titleElement.getAttribute("href") : "#";
-                const title = titleElement ? titleElement.textContent.trim() : "Título no disponible";
+                const title = titleElement ? titleElement.textContent.trim() : "Titulo no disponible";
                 const imageElement = post.querySelector(".float-shadow img");
                 const imageUrl = imageElement
                     ? imageElement.getAttribute("src")
@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Consulta de Saldo (sin cambios relevantes en la lógica principal, solo clases CSS actualizadas)
+    // Consulta de Saldo (sin cambios relevantes en la logica principal, solo clases CSS actualizadas)
     async function consultarSaldo(panapass, retries = 3) {
         if (isRequestInProgress) {
             showToast("Ya se esta procesando una consulta", "info");
@@ -362,7 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const submitButton = saldoForm.querySelector('button[type="submit"]');
 
-        // INICIO CARGA (EFECTO ESQUELETO + CAMBIO COLOR BOTÓN)
+        // INICIO CARGA (EFECTO ESQUELETO + CAMBIO COLOR BOTÃ“N)
         resultCard.classList.add("skeleton-loading");
         submitButton.classList.add("active-loading");
         submitButton.disabled = true;
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await response.json();
             if (!data.success) {
-                throw new Error(data.message || "No se encontró información");
+                throw new Error(data.message || "No se encontrÃ³ informaciÃ³n");
             }
 
             // Guardar en localStorage y actualizar UI (sin cambios relevantes)
@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } finally {
             isRequestInProgress = false;
             submitButton.disabled = false;
-            // FINALIZAR CARGA (QUITAR EFECTO ESQUELETO + COLOR BOTÓN)
+            // FINALIZAR CARGA (QUITAR EFECTO ESQUELETO + COLOR BOTÃ“N)
             resultCard.classList.remove("skeleton-loading");
             submitButton.classList.remove("active-loading");
             if (!resultSection.classList.contains("hidden")) {
@@ -545,14 +545,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Event Listeners (sin cambios relevantes en la lógica)
+    // Event Listeners (sin cambios relevantes en la lÃ³gica)
     saldoForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const panapass = panapassInput.value.trim();
 
         if (!/^\d{6,10}$/.test(panapass)) {
             showToast(
-                "Por favor, ingresa un numero de Panapass valido (6-10 dígitos)",
+                "Por favor, ingresa un numero de Panapass valido (6-10 dÃ­gitos)",
                 "error"
             );
             return;
@@ -641,7 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Inicialización
+    // InicializaciÃ³n
     function setInitialTheme() {
         const savedTheme = localStorage.getItem("theme") || "dark";
         if (savedTheme === "light") {
@@ -650,7 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateThemeIcon(savedTheme); // Establecer el icono inicial del tema
     }
 
-    // Actualización automática del año de copyright
+    // ActualizaciÃ³n automÃ¡tica del aÃ±o de copyright
     function updateCopyrightYear() {
         const currentYear = new Date().getFullYear();
         document.getElementById("copyrightYear").textContent = currentYear;
