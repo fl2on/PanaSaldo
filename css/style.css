@@ -1,520 +1,563 @@
 /* Paleta de Colores Nueva y Variables CSS */
+/*
+    Se define una paleta de colores utilizando variables CSS (custom properties) dentro de :root.
+    Esto permite centralizar y reutilizar colores facilmente en todo el proyecto.
+    Si se necesita cambiar un color, solo se modifica la variable aqui.
+*/
 :root {
-    --color-primary: #6366F1;
-    --color-primary-hover: #4F46E5;
-    --color-secondary: #8B5CF6;
-    --color-secondary-hover: #7C3AED;
-    --color-accent: #A855F7;
-    --color-accent-hover: #9333EA;
-    --color-background-dark: #111827;
-    --color-background-light: #F9FAFB;
-    --color-card-dark: #1F2937;
-    --color-card-light: #FFFFFF;
-    --color-text-primary-dark: #FFFFFF;
-    --color-text-primary-light: #374151;
-    --color-text-secondary-dark: #D1D5DB;
-    --color-text-secondary-light: #6B7280;
-    --color-border-dark: #374151;
-    --color-border-light: #E5E7EB;
-    --color-shadow: rgba(0, 0, 0, 0.15);
+    --color-primary: #6366F1; /* Color primario principal (ej: botones, elementos destacados) */
+    --color-primary-hover: #4F46E5; /* Color primario para el estado hover (cuando el mouse pasa por encima) */
+    --color-secondary: #8B5CF6; /* Color secundario (ej: elementos decorativos, tags) */
+    --color-secondary-hover: #7C3AED; /* Color secundario para el estado hover */
+    --color-accent: #A855F7; /* Color de acento, para resaltar elementos especificos */
+    --color-accent-hover: #9333EA; /* Color de acento para el estado hover */
+    --color-background-dark: #111827; /* Color de fondo para el tema oscuro */
+    --color-background-light: #F9FAFB; /* Color de fondo para el tema claro */
+    --color-card-dark: #1F2937; /* Color de fondo para las tarjetas en tema oscuro */
+    --color-card-light: #FFFFFF; /* Color de fondo para las tarjetas en tema claro (blanco) */
+    --color-text-primary-dark: #FFFFFF; /* Color de texto primario para tema oscuro (contrasta con el fondo oscuro) */
+    --color-text-primary-light: #374151; /* Color de texto primario para tema claro (contrasta con el fondo claro) */
+    --color-text-secondary-dark: #D1D5DB; /* Color de texto secundario para tema oscuro (menos importante, ej: descripciones) */
+    --color-text-secondary-light: #6B7280; /* Color de texto secundario para tema claro */
+    --color-border-dark: #374151; /* Color de borde para elementos en tema oscuro */
+    --color-border-light: #E5E7EB; /* Color de borde para elementos en tema claro */
+    --color-shadow: rgba(0, 0, 0, 0.15); /* Color de sombra, en formato RGBA para opacidad */
 }
 
+/* Estilos para la etiqueta "Pro" - .pro-tag */
 .pro-tag {
-    display: inline-block; /* Make it behave like inline text */
-    padding: 0.2rem 0.4rem; /* Adjust padding as needed */
-    margin-left: 0.25rem; /* Space between text and tag */
-    background-color: var(--color-secondary); /* Use your purple color */
-    color: var(--color-text-primary-dark); /* Text color for contrast */
-    border-radius: 0.3rem; /* Rounded corners */
-    font-size: 0.75rem; /* Adjust font size as needed */
-    font-weight: 600; /* Make it slightly bolder */
-    text-transform: uppercase; /* Optional: Make it uppercase */
-    vertical-align: top; /* Align to the top of the adjacent text */
-    line-height: 1; /* Adjust line height as needed */
+    display: inline-block; /* Permite que se comporte como texto en linea pero con propiedades de bloque */
+    padding: 0.2rem 0.4rem; /* Espaciado interno vertical y horizontal */
+    margin-left: 0.25rem; /* Margen izquierdo para separarlo del texto anterior */
+    background-color: var(--color-secondary); /* Usa el color secundario definido en :root */
+    color: var(--color-text-primary-dark); /* Texto blanco para contrastar con el fondo purpura */
+    border-radius: 0.3rem; /* Bordes redondeados */
+    font-size: 0.75rem; /* Tamano de fuente reducido */
+    font-weight: 600; /* Texto en negrita ligera */
+    text-transform: uppercase; /* Convierte el texto a mayusculas */
+    vertical-align: top; /* Alinea verticalmente con la parte superior del texto adyacente */
+    line-height: 1; /* Ajusta la altura de linea para centrar el texto verticalmente dentro del tag */
 }
 
+/* Estilos especificos para .pro-tag en tema claro */
 body.theme-light .pro-tag {
-    color: var(--color-text-primary-light); /* Adjust for light theme if needed */
+    color: var(--color-text-primary-light); /* Cambia el color del texto para el tema claro si es necesario */
 }
 
 /* Tema Oscuro (Por Defecto) */
+/*
+    Estilos base para el body que se aplican por defecto (tema oscuro).
+    Se definen el color de fondo, color de texto, fuente y transiciones generales.
+*/
 body {
-    background-color: var(--color-background-dark);
-    color: var(--color-text-primary-dark);
-    font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 0.9rem; /* Reduced base font size */
+    background-color: var(--color-background-dark); /* Fondo oscuro por defecto */
+    color: var(--color-text-primary-dark); /* Texto blanco por defecto */
+    font-family: 'Roboto', sans-serif; /* Fuente Roboto para todo el body */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transicion suave para cambios de color de fondo y texto */
+    -webkit-font-smoothing: antialiased; /* Mejora el suavizado de fuentes en navegadores Webkit (Chrome, Safari) */
+    -moz-osx-font-smoothing: grayscale; /* Mejora el suavizado de fuentes en Firefox en macOS */
+    font-size: 0.9rem; /* Tamano de fuente base reducido para un aspecto mas compacto */
 }
 
 /* Tema Claro */
+/*
+    Estilos que se aplican al body cuando tiene la clase 'theme-light'.
+    Sobrescribe los estilos del tema oscuro para crear el tema claro.
+*/
 body.theme-light {
-    background-color: var(--color-background-light);
-    color: var(--color-text-primary-light);
+    background-color: var(--color-background-light); /* Fondo claro para el tema claro */
+    color: var(--color-text-primary-light); /* Texto oscuro para el tema claro */
 }
 
 /* Estilos Globales y Reutilizables */
+/*
+    Estilos para elementos contenedores y estructura general del layout.
+    Clases como .container, .content-wrapper, .main-content y .sidebar para la distribucion del contenido.
+*/
 .container {
-    padding-left: 1rem; /* Reduced padding */
-    padding-right: 1rem; /* Reduced padding */
-    max-width: 1100px; /* Slightly reduced max width */
-    margin-left: auto;
+    padding-left: 1rem; /* Padding izquierdo reducido */
+    padding-right: 1rem; /* Padding derecho reducido */
+    max-width: 1100px; /* Ancho maximo del contenedor, ligeramente reducido */
+    margin-left: auto; /* Margen automatico izquierdo y derecho para centrar horizontalmente */
     margin-right: auto;
-    display: flex; /* Enable flexbox for main container */
-    flex-direction: column; /* Stack header, main, footer vertically */
+    display: flex; /* Activa flexbox para el contenedor principal */
+    flex-direction: column; /* Dispone los elementos hijos en columna (header, main, footer) */
 }
 
 .content-wrapper {
-    display: flex; /* Enable flexbox for main content area */
-    flex-direction: row; /* Sidebar and main content side by side */
-    width: 100%;
-    flex-grow: 1; /* Allow content-wrapper to grow and take available space */
+    display: flex; /* Activa flexbox para el contenedor principal de contenido */
+    flex-direction: row; /* Dispone los elementos hijos en fila (sidebar y main-content) */
+    width: 100%; /* Ocupa el 100% del ancho disponible */
+    flex-grow: 1; /* Permite que el contenedor crezca y ocupe el espacio disponible */
 }
 
 .main-content {
-    flex: 2; /* Main content takes 2/3 of the space */
-    padding-right: 2rem; /* Add some spacing between main content and sidebar */
+    flex: 2; /* Ocupa 2/3 del espacio horizontal disponible dentro de .content-wrapper */
+    padding-right: 2rem; /* Espaciado derecho entre el contenido principal y la barra lateral */
 }
 
 .sidebar {
-    flex: 1; /* Sidebar takes 1/3 of the space */
-    padding-left: 1rem;
+    flex: 1; /* Ocupa 1/3 del espacio horizontal disponible dentro de .content-wrapper */
+    padding-left: 1rem; /* Espaciado izquierdo para la barra lateral */
 }
 
 
 /* Estilo para "PanaSaldo" en la cabecera en TEMA OSCURO */
+/*
+    Define el color del titulo principal (h1) dentro de la cabecera (header) cuando el tema es oscuro.
+*/
 body.theme-dark header h1 {
-    color: var(--color-text-primary-dark); /* Usamos la variable de color blanco del tema oscuro */
+    color: var(--color-text-primary-dark); /* Usa la variable de color blanco para el texto en tema oscuro */
 }
 
 /* Estilo para "PanaSaldo" en la cabecera en TEMA CLARO */
+/*
+    Define el color del titulo principal (h1) dentro de la cabecera (header) cuando el tema es claro.
+*/
 body.theme-light header h1 {
-    color: #1F2937; /* Color negro o gris muy oscuro para el tema claro */
+    color: #1F2937; /* Usa un color negro/gris muy oscuro para el texto en tema claro */
 }
 
-/* Resto de estilos para h1 (si ya tienes, mantenlos, sólo ajustamos el color) */
+/* Resto de estilos para h1 */
+/*
+    Estilos generales para los encabezados h1.
+    Tamano de fuente, peso, espaciado entre letras, altura de linea y margen inferior.
+*/
 h1 {
-    font-size: 2rem; /* Tamaño de fuente (puedes mantener el que ya tengas) */
-    font-weight: 700;
-    letter-spacing: -0.05rem;
-    line-height: 2.2rem;
-    margin-bottom: 1rem; /* Reduced margin */
+    font-size: 2rem; /* Tamano de fuente para h1 */
+    font-weight: 700; /* Negrita para h1 */
+    letter-spacing: -0.05rem; /* Espaciado entre letras ligeramente negativo */
+    line-height: 2.2rem; /* Altura de linea para h1 */
+    margin-bottom: 1rem; /* Margen inferior reducido para h1 */
 }
 
 h2 {
-    font-size: 1.5rem; /* Further reduced h2 size */
-    font-weight: 600;
-    line-height: 1.8rem;
+    font-size: 1.5rem; /* Tamano de fuente reducido para h2 */
+    font-weight: 600; /* Negrita para h2 */
+    line-height: 1.8rem; /* Altura de linea para h2 */
 }
 
 h3.section-title {
-    font-size: 1.2rem; /* Further reduced section title size */
-    font-weight: 600;
-    margin-bottom: 1rem; /* Reduced margin */
-    color: var(--color-text-primary-dark);
+    font-size: 1.2rem; /* Tamano de fuente reducido para titulos de seccion (h3) */
+    font-weight: 600; /* Negrita para titulos de seccion (h3) */
+    margin-bottom: 1rem; /* Margen inferior reducido para titulos de seccion (h3) */
+    color: var(--color-text-primary-dark); /* Color de texto primario (blanco en tema oscuro) */
 }
 
 body.theme-light h3.section-title {
-    color: var(--color-text-primary-light);
+    color: var(--color-text-primary-light); /* Cambia el color del texto para tema claro */
 }
 
 p.section-description {
-    color: var(--color-text-secondary-dark);
-    line-height: 1.4rem; /* Further reduced line height */
-    margin-bottom: 1.2rem; /* Reduced margin */
-    font-size: 0.9rem; /* Further reduced paragraph size */
+    color: var(--color-text-secondary-dark); /* Color de texto secundario (gris claro en tema oscuro) */
+    line-height: 1.4rem; /* Altura de linea reducida para descripciones */
+    margin-bottom: 1.2rem; /* Margen inferior reducido para descripciones */
+    font-size: 0.9rem; /* Tamano de fuente reducido para parrafos de descripcion */
 }
 
 body.theme-light p.section-description {
-    color: var(--color-text-secondary-light);
+    color: var(--color-text-secondary-light); /* Cambia el color del texto para tema claro */
 }
 
 .card {
-    background-color: var(--color-card-dark);
-    border-radius: 0.6rem; /* Further reduced card radius */
-    padding: 1.4rem; /* Further reduced card padding */
-    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Further reduced shadow */
-    transition: background-color 0.3s ease;
-    border: 1px solid var(--color-border-dark);
-    margin-bottom: 1.5rem; /* Added margin between cards */
+    background-color: var(--color-card-dark); /* Fondo de tarjeta oscuro por defecto */
+    border-radius: 0.6rem; /* Bordes de tarjeta mas redondeados */
+    padding: 1.4rem; /* Espaciado interno reducido para tarjetas */
+    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Sombra sutil para tarjetas */
+    transition: background-color 0.3s ease; /* Transicion suave para cambios de color de fondo */
+    border: 1px solid var(--color-border-dark); /* Borde para las tarjetas en tema oscuro */
+    margin-bottom: 1.5rem; /* Margen inferior entre tarjetas */
 }
 
 body.theme-light .card {
-    background-color: var(--color-card-light);
-    border-color: var(--color-border-light);
+    background-color: var(--color-card-light); /* Fondo de tarjeta claro para tema claro */
+    border-color: var(--color-border-light); /* Borde para las tarjetas en tema claro */
 }
 
 .btn-primary {
-    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-    color: var(--color-text-primary-dark);
-    font-weight: 600;
-    padding: 0.7rem 1.2rem; /* Further reduced button padding */
-    border-radius: 0.5rem; /* Further reduced button radius */
-    transition: background-image 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 0.3rem 0.6rem var(--color-shadow); /* Further reduced shadow */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem; /* Further reduced gap */
-    font-size: 0.9rem; /* Further reduced font size */
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary)); /* Degradado lineal para el fondo del boton */
+    color: var(--color-text-primary-dark); /* Texto blanco para el boton */
+    font-weight: 600; /* Negrita para el texto del boton */
+    padding: 0.7rem 1.2rem; /* Espaciado interno reducido para botones */
+    border-radius: 0.5rem; /* Bordes de boton mas redondeados */
+    transition: background-image 0.3s ease, transform 0.2s ease; /* Transiciones para hover y active */
+    box-shadow: 0 0.3rem 0.6rem var(--color-shadow); /* Sombra sutil para botones */
+    display: inline-flex; /* Permite usar flexbox en linea para alinear icono y texto */
+    align-items: center; /* Alinea verticalmente los items dentro del boton */
+    justify-content: center; /* Centra horizontalmente los items dentro del boton */
+    gap: 0.5rem; /* Espacio entre icono y texto dentro del boton */
+    font-size: 0.9rem; /* Tamano de fuente reducido para botones */
 }
 
 .btn-primary:hover {
-    background-image: linear-gradient(to right, var(--color-primary-hover), var(--color-secondary-hover));
-    transform: scale(1.03);
+    background-image: linear-gradient(to right, var(--color-primary-hover), var(--color-secondary-hover)); /* Degradado hover con colores mas oscuros */
+    transform: scale(1.03); /* Escala ligeramente el boton en hover */
 }
 
 .btn-primary:active {
-    transform: scale(0.97);
+    transform: scale(0.97); /* Escala ligeramente hacia abajo en active */
     background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary)); /*Active state color change*/
     box-shadow: none; /*Remove shadow on active state*/
 }
 
 .btn-primary.active-loading {
-    position: relative;
-    pointer-events: none; /* Disable clicks during loading */
-    color: rgba(255, 255, 255, 0.7); /* Lighten text color during loading */
+    position: relative; /* Posicionamiento relativo para el spinner */
+    pointer-events: none; /* Desactiva los clicks durante la carga */
+    color: rgba(255, 255, 255, 0.7); /* Aclara el texto durante la carga */
 }
 
 .btn-primary.active-loading::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -0.75em;
-    margin-top: -0.75em;
-    border: 0.5em solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: #fff;
-    width: 1.5em;
-    height: 1.5em;
-    animation: spin 1s linear infinite;
+    content: ''; /* Contenido vacio para el spinner */
+    position: absolute; /* Posicionamiento absoluto dentro del boton */
+    left: 50%; /* Centra horizontalmente */
+    top: 50%; /* Centra verticalmente */
+    margin-left: -0.75em; /* Ajuste horizontal para centrado exacto */
+    margin-top: -0.75em; /* Ajuste vertical para centrado exacto */
+    border: 0.5em solid rgba(255, 255, 255, 0.3); /* Borde del spinner, transparente */
+    border-radius: 50%; /* Hace el borde circular */
+    border-top-color: #fff; /* Color del borde superior, blanco para que sea visible */
+    width: 1.5em; /* Ancho del spinner */
+    height: 1.5em; /* Alto del spinner */
+    animation: spin 1s linear infinite; /* Aplica la animacion 'spin' */
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to { transform: rotate(360deg); } /* Rota 360 grados para crear la animacion de giro */
 }
 
 
 body.theme-light .btn-primary {
-    color: var(--color-text-primary-light);
+    color: var(--color-text-primary-light); /* Cambia el color del texto para tema claro */
 }
 
 .input-panapass {
-    width: 100%;
-    padding: 0.7rem; /* Further reduced input padding */
-    border-radius: 0.5rem; /* Further reduced input radius */
-    border: 2px solid var(--color-border-dark);
-    background-color: var(--color-card-dark);
-    color: var(--color-text-primary-dark);
-    font-size: 0.9rem; /* Further reduced input font size */
-    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    width: 100%; /* Ocupa el 100% del ancho de su contenedor */
+    padding: 0.7rem; /* Espaciado interno reducido para inputs */
+    border-radius: 0.5rem; /* Bordes de input mas redondeados */
+    border: 2px solid var(--color-border-dark); /* Borde grueso para inputs en tema oscuro */
+    background-color: var(--color-card-dark); /* Fondo de input oscuro por defecto */
+    color: var(--color-text-primary-dark); /* Texto blanco para input en tema oscuro */
+    font-size: 0.9rem; /* Tamano de fuente reducido para inputs */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves para cambios de estilo */
 }
 
 body.theme-light .input-panapass {
-    border-color: var(--color-border-light);
-    background-color: var(--color-card-light);
-    color: var(--color-text-primary-light);
+    border-color: var(--color-border-light); /* Borde para inputs en tema claro */
+    background-color: var(--color-card-light); /* Fondo de input claro para tema claro */
+    color: var(--color-text-primary-light); /* Texto oscuro para input en tema claro */
 }
 
 .input-panapass::placeholder {
-    color: var(--color-text-secondary-dark);
-    opacity: 0.8;
+    color: var(--color-text-secondary-dark); /* Color de texto secundario para placeholder en tema oscuro */
+    opacity: 0.8; /* Opacidad del placeholder */
 }
 
 body.theme-light .input-panapass::placeholder {
-    color: var(--color-text-secondary-light);
+    color: var(--color-text-secondary-light); /* Cambia el color del placeholder para tema claro */
 }
 
 .icon-input {
-    width: 0.9rem; /* Further reduced icon size */
-    height: 0.9rem; /* Further reduced icon size */
-    color: var(--color-text-secondary-dark);
-    transition: color 0.3s ease;
-    stroke-width: 2; /* SVG icon quality - slightly thicker stroke for smaller size */
-    vertical-align: middle;
-    fill: none; /* Asegúrate de que fill: none; siga aquí, importante para la lupa */
+    width: 0.9rem; /* Ancho de icono reducido */
+    height: 0.9rem; /* Alto de icono reducido */
+    color: var(--color-text-secondary-dark); /* Color de icono secundario (gris claro en tema oscuro) */
+    transition: color 0.3s ease; /* Transicion suave para cambios de color */
+    stroke-width: 2; /* Grosor del trazo del icono SVG (para mejor calidad a menor tamano) */
+    vertical-align: middle; /* Alineacion vertical al centro */
+    fill: none; /* Asegura que el relleno del icono SVG sea transparente (importante para iconos de lupa) */
 }
 
 body.theme-light .icon-input {
-    color: var(--color-text-secondary-light);
+    color: var(--color-text-secondary-light); /* Cambia el color del icono para tema claro */
 }
 
 .result-card {
-    background-color: var(--color-card-dark);
-    border-radius: 0.6rem; /* Further reduced result card radius */
-    padding: 1.8rem; /* Further reduced result card padding */
-    text-align: center;
-    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Further reduced shadow */
-    transition: background-color 0.3s ease;
-    border: 1px solid var(--color-border-dark);
+    background-color: var(--color-card-dark); /* Fondo de tarjeta de resultado oscuro por defecto */
+    border-radius: 0.6rem; /* Bordes de tarjeta de resultado mas redondeados */
+    padding: 1.8rem; /* Espaciado interno reducido para tarjetas de resultado */
+    text-align: center; /* Centra el texto dentro de la tarjeta de resultado */
+    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Sombra sutil para tarjetas de resultado */
+    transition: background-color 0.3s ease; /* Transicion suave para cambios de color de fondo */
+    border: 1px solid var(--color-border-dark); /* Borde para las tarjetas de resultado en tema oscuro */
 }
 
 body.theme-light .result-card {
-    background-color: var(--color-card-light);
-    border-color: var(--color-border-light);
+    background-color: var(--color-card-light); /* Fondo de tarjeta de resultado claro para tema claro */
+    border-color: var(--color-border-light); /* Borde para las tarjetas de resultado en tema claro */
 }
 
 .result-icon {
-    width: 2.8rem; /* Further reduced result icon size */
-    height: 2.8rem; /* Further reduced result icon size */
-    border-radius: 50%;
-    background-color: var(--color-primary);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.8rem; /* Reduced margin */
+    width: 2.8rem; /* Ancho de icono de resultado reducido */
+    height: 2.8rem; /* Alto de icono de resultado reducido */
+    border-radius: 50%; /* Icono de resultado circular */
+    background-color: var(--color-primary); /* Fondo primario para el icono de resultado */
+    display: inline-flex; /* Permite usar flexbox en linea para centrar el SVG */
+    align-items: center; /* Alinea verticalmente el SVG */
+    justify-content: center; /* Centra horizontalmente el SVG */
+    margin-bottom: 0.8rem; /* Margen inferior reducido para el icono de resultado */
 }
 
 .result-icon svg {
-    width: 1.4rem; /* Further reduced result svg icon size */
-    height: 1.4rem; /* Further reduced result svg icon size */
-    fill: var(--color-text-primary-dark);
-    transition: fill 0.3s ease;
-    stroke-width: 2; /* Slightly thicker stroke for smaller size */
+    width: 1.4rem; /* Ancho de SVG de resultado reducido */
+    height: 1.4rem; /* Alto de SVG de resultado reducido */
+    fill: var(--color-text-primary-dark); /* Relleno blanco para el SVG en tema oscuro */
+    transition: fill 0.3s ease; /* Transicion suave para cambios de relleno */
+    stroke-width: 2; /* Grosor del trazo del SVG (para mejor calidad a menor tamano) */
 }
 
 body.theme-light .result-icon svg {
-    fill: var(--color-text-primary-light);
+    fill: var(--color-text-primary-light); /* Cambia el relleno del SVG para tema claro */
 }
 
 #saldo {
-    font-size: 1.5rem; /* Further reduced saldo size */
-    font-weight: 700;
-    margin-bottom: 0.4rem; /* Reduced margin */
-    letter-spacing: -0.025rem;
+    font-size: 1.5rem; /* Tamano de fuente reducido para el saldo */
+    font-weight: 700; /* Negrita para el saldo */
+    margin-bottom: 0.4rem; /* Margen inferior reducido para el saldo */
+    letter-spacing: -0.025rem; /* Espaciado entre letras ligeramente negativo */
 }
 
 #lastDate {
-    font-size: 0.85rem; /* Further reduced last date size */
-    color: var(--color-text-secondary-dark);
+    font-size: 0.85rem; /* Tamano de fuente reducido para la fecha */
+    color: var(--color-text-secondary-dark); /* Color de texto secundario para la fecha (gris claro en tema oscuro) */
 }
 
 .additional-info-card {
-    background-color: var(--color-card-dark);
-    border-radius: 0.6rem; /* Further reduced additional info card radius */
-    padding: 1.4rem; /* Further reduced additional info card padding */
-    margin-top: 1.4rem; /* Reduced margin */
-    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Further reduced shadow */
-    transition: background-color 0.3s ease;
-    border: 1px solid var(--color-border-dark);
+    background-color: var(--color-card-dark); /* Fondo de tarjeta de informacion adicional oscuro por defecto */
+    border-radius: 0.6rem; /* Bordes de tarjeta de informacion adicional mas redondeados */
+    padding: 1.4rem; /* Espaciado interno reducido para tarjetas de informacion adicional */
+    margin-top: 1.4rem; /* Margen superior reducido para separar de la tarjeta de resultado */
+    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Sombra sutil para tarjetas de informacion adicional */
+    transition: background-color 0.3s ease; /* Transicion suave para cambios de color de fondo */
+    border: 1px solid var(--color-border-dark); /* Borde para las tarjetas de informacion adicional en tema oscuro */
 }
 
 body.theme-light .additional-info-card {
-    background-color: var(--color-card-light);
-    border-color: var(--color-border-light);
+    background-color: var(--color-card-light); /* Fondo de tarjeta de informacion adicional claro para tema claro */
+    border-color: var(--color-border-light); /* Borde para las tarjetas de informacion adicional en tema claro */
 }
 
 .additional-info-title {
-    font-size: 1.2rem; /* Further reduced additional info title size */
-    font-weight: 600;
-    margin-bottom: 0.8rem; /* Reduced margin */
+    font-size: 1.2rem; /* Tamano de fuente reducido para titulos de informacion adicional */
+    font-weight: 600; /* Negrita para titulos de informacion adicional */
+    margin-bottom: 0.8rem; /* Margen inferior reducido para titulos de informacion adicional */
 }
 
 .info-item {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 0.5rem; /* Further reduced info item radius */
-    padding: 0.7rem 1rem; /* Further reduced info item padding */
-    margin-bottom: 0.6rem; /* Reduced margin */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    font-size: 0.9rem; /* Further reduced font size */
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo ligeramente transparente para items de informacion */
+    border-radius: 0.5rem; /* Bordes de item de informacion mas redondeados */
+    padding: 0.7rem 1rem; /* Espaciado interno reducido para items de informacion */
+    margin-bottom: 0.6rem; /* Margen inferior reducido para items de informacion */
+    display: flex; /* Activa flexbox para alinear label y value */
+    justify-content: space-between; /* Separa label y value */
+    align-items: center; /* Alinea verticalmente label y value */
+    transition: background-color 0.3s ease; /* Transicion suave para cambios de color de fondo */
+    font-size: 0.9rem; /* Tamano de fuente reducido para items de informacion */
 }
 
 .info-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo ligeramente mas oscuro en hover */
 }
 
 .info-label {
-    font-weight: 600;
-    font-size: 0.95rem; /* Further reduced info label size */
+    font-weight: 600; /* Negrita para labels de informacion */
+    font-size: 0.95rem; /* Tamano de fuente reducido para labels de informacion */
 }
 
 .info-value {
-    font-size: 0.85rem; /* Further reduced info value size */
-    color: var(--color-text-secondary-dark);
+    font-size: 0.85rem; /* Tamano de fuente reducido para values de informacion */
+    color: var(--color-text-secondary-dark); /* Color de texto secundario para values de informacion (gris claro en tema oscuro) */
 }
 
 .history-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 10rem; /* Further reduced history max height */
-    overflow-y: auto;
-    padding-right: 0.4rem; /* Reduced padding */
+    list-style: none; /* Elimina los estilos de lista por defecto */
+    padding: 0; /* Elimina el padding por defecto de la lista */
+    margin: 0; /* Elimina el margen por defecto de la lista */
+    max-height: 10rem; /* Altura maxima de la lista, con scroll vertical si excede */
+    overflow-y: auto; /* Activa el scroll vertical si el contenido excede max-height */
+    padding-right: 0.4rem; /* Padding derecho para dejar espacio para el scrollbar */
 }
 
 .history-item {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 0.5rem; /* Further reduced history item radius */
-    padding: 0.7rem 1rem; /* Further reduced history item padding */
-    margin-bottom: 0.5rem; /* Reduced margin */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-    font-size: 0.9rem; /* Further reduced font size */
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo ligeramente transparente para items de historial */
+    border-radius: 0.5rem; /* Bordes de item de historial mas redondeados */
+    padding: 0.7rem 1rem; /* Espaciado interno reducido para items de historial */
+    margin-bottom: 0.5rem; /* Margen inferior reducido para items de historial */
+    display: flex; /* Activa flexbox para alinear value y date */
+    justify-content: space-between; /* Separa value y date */
+    align-items: center; /* Alinea verticalmente value y date */
+    transition: background-color 0.3s ease; /* Transicion suave para cambios de color de fondo */
+    font-size: 0.9rem; /* Tamano de fuente reducido para items de historial */
 }
 
 .history-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo ligeramente mas oscuro en hover */
 }
 
 .history-value {
-    font-weight: 600;
-    font-size: 0.85rem; /* Further reduced history value size */
+    font-weight: 600; /* Negrita para values del historial */
+    font-size: 0.85rem; /* Tamano de fuente reducido para values del historial */
 }
 
 .history-date {
-    font-size: 0.75rem; /* Further reduced history date size */
-    color: var(--color-text-secondary-dark);
+    font-size: 0.75rem; /* Tamano de fuente reducido para fechas del historial */
+    color: var(--color-text-secondary-dark); /* Color de texto secundario para fechas del historial (gris claro en tema oscuro) */
 }
 
 .show-more-btn {
-    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-    color: var(--color-text-primary-dark);
-    font-weight: 600;
-    padding: 0.5rem 1rem; /* Further reduced show more button padding */
-    border-radius: 0.5rem; /* Further reduced show more button radius */
-    transition: background-image 0.3s ease, transform 0.2s ease;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 0.8rem; /* Reduced margin */
-    box-shadow: 0 0.3rem 0.6rem var(--color-shadow); /* Further reduced shadow */
-    font-size: 0.85rem; /* Further reduced font size */
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary)); /* Degradado lineal para el fondo del boton */
+    color: var(--color-text-primary-dark); /* Texto blanco para el boton */
+    font-weight: 600; /* Negrita para el texto del boton */
+    padding: 0.5rem 1rem; /* Espaciado interno reducido para botones "Mostrar mas" */
+    border-radius: 0.5rem; /* Bordes de boton "Mostrar mas" mas redondeados */
+    transition: background-image 0.3s ease, transform 0.2s ease; /* Transiciones para hover y active */
+    display: block; /* Hace que el boton ocupe todo el ancho disponible */
+    width: 100%; /* Ocupa el 100% del ancho de su contenedor */
+    text-align: center; /* Centra el texto dentro del boton */
+    margin-top: 0.8rem; /* Margen superior reducido para el boton "Mostrar mas" */
+    box-shadow: 0 0.3rem 0.6rem var(--color-shadow); /* Sombra sutil para botones "Mostrar mas" */
+    font-size: 0.85rem; /* Tamano de fuente reducido para botones "Mostrar mas" */
 }
 
 .show-more-btn:hover {
-    background-image: linear-gradient(to right, var(--color-primary-hover), var(--color-secondary-hover));
-    transform: scale(1.03);
+    background-image: linear-gradient(to right, var(--color-primary-hover), var(--color-secondary-hover)); /* Degradado hover con colores mas oscuros */
+    transform: scale(1.03); /* Escala ligeramente el boton en hover */
 }
 
 .show-more-btn:active {
-    transform: scale(0.97);
+    transform: scale(0.97); /* Escala ligeramente hacia abajo en active */
 }
 
 .saved-panapass-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none; /* Elimina los estilos de lista por defecto */
+    padding: 0; /* Elimina el padding por defecto de la lista */
+    margin: 0; /* Elimina el margen por defecto de la lista */
 }
 
 .saved-panapass-item {
-    padding: 1rem; /* Further reduced saved panapass item padding */
-    border-bottom: 1px solid var(--color-border-dark);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 1rem; /* Espaciado interno reducido para items de Panapass guardados */
+    border-bottom: 1px solid var(--color-border-dark); /* Borde inferior para separar items en tema oscuro */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Transiciones suaves para cambios de estilo */
+    display: flex; /* Activa flexbox para alinear elementos dentro del item */
+    align-items: center; /* Alinea verticalmente los elementos dentro del item */
+    justify-content: space-between; /* Separa el contenido principal de las acciones (botones) */
 }
 
 body.theme-light .saved-panapass-item {
-    border-color: var(--color-border-light);
+    border-color: var(--color-border-light); /* Cambia el color del borde para tema claro */
 }
 
+/* Elimina el borde inferior del ultimo item de la lista */
 .saved-panapass-item:last-child {
     border-bottom: none;
 }
 
+/* Estilos para .saved-panapass-item en hover */
 .saved-panapass-item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo ligeramente transparente en hover */
 }
 
 .panapass-icon {
-    width: 2.2rem; /* Further reduced panapass icon size */
-    height: 2.2rem; /* Further reduced panapass icon size */
-    border-radius: 0.5rem; /* Further reduced panapass icon radius */
-    background-color: var(--color-primary);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.8rem; /* Reduced margin */
-    flex-shrink: 0;
+    width: 2.2rem; /* Ancho de icono de Panapass reducido */
+    height: 2.2rem; /* Alto de icono de Panapass reducido */
+    border-radius: 0.5rem; /* Bordes de icono de Panapass mas redondeados */
+    background-color: var(--color-primary); /* Fondo primario para el icono de Panapass */
+    display: inline-flex; /* Permite usar flexbox en linea para centrar el SVG */
+    align-items: center; /* Alinea verticalmente el SVG */
+    justify-content: center; /* Centra horizontalmente el SVG */
+    margin-right: 0.8rem; /* Margen derecho reducido para separar del numero */
+    flex-shrink: 0; /* Evita que el icono se encoja */
 }
 
 .panapass-icon svg {
-    width: 1.1rem; /* Further reduced panapass svg icon size */
-    height: 1.1rem; /* Further reduced panapass svg icon size */
-    fill: var(--color-text-primary-dark);
-    transition: fill 0.3s ease;
-    stroke-width: 2; /* Slightly thicker stroke for smaller size */
+    width: 1.1rem; /* Ancho de SVG de Panapass reducido */
+    height: 1.1rem; /* Alto de SVG de Panapass reducido */
+    fill: var(--color-text-primary-dark); /* Relleno blanco para el SVG en tema oscuro */
+    transition: fill 0.3s ease; /* Transicion suave para cambios de relleno */
+    stroke-width: 2; /* Grosor del trazo del SVG (para mejor calidad a menor tamano) */
 }
 
 body.theme-light .panapass-icon svg {
-    fill: var(--color-text-primary-light);
+    fill: var(--color-text-primary-light); /* Cambia el relleno del SVG para tema claro */
 }
 
 .panapass-number-col {
-    flex-grow: 1;
-    min-width: 0;
+    flex-grow: 1; /* Permite que la columna crezca y ocupe el espacio restante */
+    min-width: 0; /* Permite que la columna se encoja por debajo de su ancho natural si es necesario */
 }
 
 .panapass-number {
-    font-weight: 600;
-    font-size: 0.95rem; /* Further reduced panapass number size */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: block;
+    font-weight: 600; /* Negrita para el numero de Panapass */
+    font-size: 0.95rem; /* Tamano de fuente reducido para el numero de Panapass */
+    overflow: hidden; /* Oculta el texto que excede el ancho */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) para el texto cortado */
+    white-space: nowrap; /* Evita que el texto se envuelva a la siguiente linea */
+    display: block; /* Asegura que text-overflow: ellipsis funcione correctamente */
 }
 
 .panapass-actions button {
-    padding: 0.5rem 0.8rem; /* Further reduced panapass actions button padding */
-    border-radius: 0.3rem; /* Further reduced panapass actions button radius */
-    font-weight: 600;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    margin-left: 0.3rem; /* Reduced margin */
-    font-size: 0.85rem; /* Further reduced font size */
+    padding: 0.5rem 0.8rem; /* Espaciado interno reducido para botones de accion */
+    border-radius: 0.3rem; /* Bordes de botones de accion mas redondeados */
+    font-weight: 600; /* Negrita para el texto de los botones de accion */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Transiciones suaves para cambios de estilo */
+    margin-left: 0.3rem; /* Margen izquierdo reducido entre botones de accion */
+    font-size: 0.85rem; /* Tamano de fuente reducido para botones de accion */
 }
 
 .panapass-actions button:hover {
-    transform: translateY(-0.2rem);
+    transform: translateY(-0.2rem); /* Eleva ligeramente el boton en hover */
 }
 
+/* Estilos especificos para el boton "Consultar" */
 .panapass-actions button[data-action="consult"] {
-    background-color: var(--color-primary);
-    color: var(--color-text-primary-dark);
+    background-color: var(--color-primary); /* Fondo primario para el boton "Consultar" */
+    color: var(--color-text-primary-dark); /* Texto blanco para el boton "Consultar" */
 }
 
+/* Estilos para el boton "Consultar" en hover */
 .panapass-actions button[data-action="consult"]:hover {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-primary-hover); /* Fondo primario hover para el boton "Consultar" */
 }
 
+/* Estilos especificos para el boton "Eliminar" */
 .panapass-actions button[data-action="delete"] {
-    background-color: #DC2626;
-    color: var(--color-text-primary-dark);
+    background-color: #DC2626; /* Fondo rojo para el boton "Eliminar" */
+    color: var(--color-text-primary-dark); /* Texto blanco para el boton "Eliminar" */
 }
 
+/* Estilos para el boton "Eliminar" en hover */
 .panapass-actions button[data-action="delete"]:hover {
-    background-color: #B91C1C;
+    background-color: #B91C1C; /* Fondo rojo hover para el boton "Eliminar" */
 }
 
-/* Animación Fade-In */
+/* Animacion Fade-In */
+/*
+    Define una animacion fadeIn para elementos que se desean mostrar con un efecto de fundido.
+*/
 @keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(10px); /* Reduced initial displacement */
+        opacity: 0; /* Inicia con opacidad 0 (invisible) */
+        transform: translateY(10px); /* Inicia ligeramente desplazado hacia abajo */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1; /* Termina con opacidad 1 (visible) */
+        transform: translateY(0); /* Termina en su posicion original */
     }
 }
 
+/* Clase para aplicar la animacion Fade-In */
 .animate-fade-in {
-    animation: fadeIn 0.4s ease-out forwards;
+    animation: fadeIn 0.4s ease-out forwards; /* Aplica la animacion fadeIn con duracion, tipo de easing y mantiene el estado final */
 }
 
 /* Scrollbar Personalizada (Webkit - Chrome, Safari) */
+/*
+    Estilos para personalizar la barra de scroll en navegadores Webkit (Chrome, Safari).
+*/
 ::-webkit-scrollbar {
-    width: 7px; /* Further reduced scrollbar width */
-    height: 7px; /* Further reduced scrollbar height */
+    width: 7px; /* Ancho reducido para la barra de scroll */
+    height: 7px; /* Alto reducido para la barra de scroll */
 }
 
+/* Track de la barra de scroll (fondo) */
 ::-webkit-scrollbar-track {
     background-color: var(--color-card-dark);
 }
@@ -523,9 +566,10 @@ body.theme-light ::-webkit-scrollbar-track {
     background-color: var(--color-card-light);
 }
 
+/* Thumb de la barra de scroll (parte que se mueve) */
 ::-webkit-scrollbar-thumb {
     background-color: var(--color-primary);
-    border-radius: 0.4rem; /* Further reduced scrollbar thumb radius */
+    border-radius: 0.4rem; /* Radio reducido para el thumb de la scrollbar */
     border: 2px solid var(--color-card-dark);
 }
 
@@ -542,7 +586,7 @@ body.theme-light ::-webkit-scrollbar-thumb {
     background: linear-gradient(90deg, var(--color-border-dark) 25%, rgba(55, 65, 81, 0.5) 50%, var(--color-border-dark) 75%);
     background-size: 200% 100%;
     animation: skeleton-animation 1.8s linear infinite;
-    border-radius: 0.6rem; /* Further reduced skeleton loading radius */
+    border-radius: 0.6rem; /* Radio reducido para el skeleton loading */
 }
 
 body.theme-light .skeleton-loading {
@@ -558,7 +602,7 @@ body.theme-light .skeleton-loading {
     }
 }
 
-/* Micro-interacción botón Consultar Saldo (Active state mejorado) */
+/* Micro-interaccion boton Consultar Saldo (Active state mejorado) */
 button[type="submit"]:active {
     transform: scale(0.97);
     box-shadow: none;
@@ -569,7 +613,7 @@ button[type="submit"]:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.4rem; /* Further reduced theme switcher padding */
+    padding: 0.4rem; /* Padding reducido para el theme switcher */
     border-radius: 50%;
     background-color: var(--color-card-dark);
     border: 1px solid var(--color-border-dark);
@@ -592,8 +636,8 @@ body.theme-light .theme-switcher {
 }
 
 .theme-icon {
-    width: 1rem; /* Further reduced theme icon size */
-    height: 1rem; /* Further reduced theme icon size */
+    width: 1rem; /* Ancho reducido para el theme icon */
+    height: 1rem; /* Alto reducido para el theme icon */
 }
 
 /* Estilos del icono para el tema claro */
@@ -607,9 +651,9 @@ body.theme-light .theme-switcher {
     stroke: #FFFFFF; /* Ejemplo: Blanco para el trazo del icono de sol en tema oscuro */
 }
 
-/* Estilos para el Feed de Twitter (puedes ajustarlos según necesites) */
+/* Estilos para el Feed de Twitter (puedes ajustarlos segun necesites) */
 .twitter-tweet-card {
-    margin-top: 1.5rem; /* Reduced margin */
+    margin-top: 1.5rem; /* Margen reducido */
 }
 
 blockquote.twitter-tweet {
@@ -629,7 +673,7 @@ body.theme-light blockquote.twitter-tweet {
     background-color: var(--color-card-light);
 }
 
-/* Estilos para la sección de noticias en la sidebar */
+/* Estilos para la seccion de noticias en la sidebar */
 .sidebar-news-section {
     margin-top: 1.5rem;
 }
@@ -642,8 +686,8 @@ body.theme-light blockquote.twitter-tweet {
 
 .sidebar-news-item {
     margin-bottom: 1rem; /* Spacing between news items */
-    padding: 0.8rem; /* Reduced padding for sidebar news items */
-    border-radius: 0.5rem; /* Reduced border radius for sidebar news items */
+    padding: 0.8rem; /* Padding reducido para sidebar news items */
+    border-radius: 0.5rem; /* Radio de borde reducido para sidebar news items */
     background-color: var(--color-card-dark);
     border: 1px solid var(--color-border-dark);
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -663,7 +707,7 @@ body.theme-light .sidebar-news-item {
 .sidebar-news-item-image {
     width: 60px; /* Fixed width for sidebar news images */
     height: auto; /* Maintain aspect ratio */
-    border-radius: 0.4rem; /* Reduced image border radius */
+    border-radius: 0.4rem; /* Radio de imagen de noticias de la barra lateral reducido */
     margin-right: 0.8rem; /* Spacing between image and text */
     display: block; /* Ensure image behaves as block for margin to work */
     object-fit: cover; /* cover image area, cropping if necessary */
@@ -679,13 +723,13 @@ body.theme-light .sidebar-news-item {
 
 .sidebar-news-item-title {
     font-weight: bold;
-    margin-bottom: 0.3rem; /* Reduced margin */
+    margin-bottom: 0.3rem; /* Margen reducido */
     font-size: 0.9rem; /* Reduced title font size */
     line-height: 1.2rem; /* Reduced line height */
-    overflow: hidden;      /* Enable text clipping */
+    overflow: hidden;     /* Enable text clipping */
     text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
-    display: -webkit-box;    /* Use flexbox for clipping */
-    -webkit-line-clamp: 2;  /* Clip text to 2 lines */
+    display: -webkit-box;      /* Use flexbox for clipping */
+    -webkit-line-clamp: 2;     /* Clip text to 2 lines */
     -webkit-box-orient: vertical;
 }
 
@@ -705,9 +749,9 @@ footer {
     margin-top: 2rem; /* Aseguramos un margen superior un poco mayor */
     text-align: center;
     color: var(--color-text-secondary-dark); /* Usamos el color de texto secundario */
-    font-size: 0.8rem; /* Reducimos un poco el tamaño de la fuente para el footer */
+    font-size: 0.8rem; /* Reducimos un poco el tamano de la fuente para el footer */
     line-height: 1.5; /* Aumentamos el interlineado para mejor legibilidad */
-    padding: 1rem 0; /* Añadimos un poco de padding vertical */
+    padding: 1rem 0; /* Anadimos un poco de padding vertical */
     word-wrap: break-word; /* IMPORTANTE: Permite que las palabras largas se rompan y envuelvan */
     overflow-wrap: break-word; /* Alternativa para word-wrap, para mayor compatibilidad */
 }
@@ -717,19 +761,19 @@ body.theme-light footer {
 }
 
 footer p {
-    margin-bottom: 0.7rem; /* Espacio entre párrafos del footer */
-    font-size: 0.85rem; /* Tamaño de fuente para los párrafos dentro del footer */
-    line-height: 1.6; /* Interlineado para párrafos del footer */
-    word-wrap: break-word; /* IMPORTANTE también para los <p> dentro del footer */
+    margin-bottom: 0.7rem; /* Espacio entre parrafos del footer */
+    font-size: 0.85rem; /* Tamano de fuente para los parrafos dentro del footer */
+    line-height: 1.6; /* Interlineado para parrafos del footer */
+    word-wrap: break-word; /* IMPORTANTE tambien para los <p> dentro del footer */
     overflow-wrap: break-word;
 }
 
 footer p:last-child {
-    margin-bottom: 0; /* Elimina el margen inferior del último párrafo */
+    margin-bottom: 0; /* Elimina el margen inferior del ultimo parrafo */
 }
 
 /* Ajuste para el texto del copyright (si quieres un estilo diferente) */
 footer p:first-child {
-    font-size: 0.9rem; /*  Tamaño un poco mayor para el copyright si deseas */
-    font-weight: 600; /*  Resaltar un poco el copyright si deseas */
+    font-size: 0.9rem;     /*  Tamano un poco mayor para el copyright si deseas */
+    font-weight: 600;      /*  Resaltar un poco el copyright si deseas */
 }
