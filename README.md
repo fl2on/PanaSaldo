@@ -42,7 +42,7 @@ Para cualquier trámite oficial, gestión de cuenta o inconvenientes con tu **Pa
 
 ## 📸 Screenshot  
 
-![image](https://github.com/user-attachments/assets/17413335-8233-430b-83d0-af05c1dc818f)
+![image](https://github.com/user-attachments/assets/d53ded24-20d4-4db1-b1aa-bd8db04239b0)
 
 ## 🛠️ Tecnologías Usadas  
 
