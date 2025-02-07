@@ -1,340 +1,735 @@
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(7px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.035);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-.animate-fade-in {
-  animation: fadeIn 0.21s ease-out forwards;
+/* Paleta de Colores Nueva y Variables CSS */
+:root {
+    --color-primary: #6366F1;
+    --color-primary-hover: #4F46E5;
+    --color-secondary: #8B5CF6;
+    --color-secondary-hover: #7C3AED;
+    --color-accent: #A855F7;
+    --color-accent-hover: #9333EA;
+    --color-background-dark: #111827;
+    --color-background-light: #F9FAFB;
+    --color-card-dark: #1F2937;
+    --color-card-light: #FFFFFF;
+    --color-text-primary-dark: #FFFFFF;
+    --color-text-primary-light: #374151;
+    --color-text-secondary-dark: #D1D5DB;
+    --color-text-secondary-light: #6B7280;
+    --color-border-dark: #374151;
+    --color-border-light: #E5E7EB;
+    --color-shadow: rgba(0, 0, 0, 0.15);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 7px;
-}
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.07);
-  border-radius: 3.5px;
-}
-::-webkit-scrollbar-thumb {
-  background: #4F46E5;
-  border-radius: 3.5px;
-  border: 1.4px solid rgba(255, 255, 255, 0.07);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #7C3AED;
+.pro-tag {
+    display: inline-block; /* Make it behave like inline text */
+    padding: 0.2rem 0.4rem; /* Adjust padding as needed */
+    margin-left: 0.25rem; /* Space between text and tag */
+    background-color: var(--color-secondary); /* Use your purple color */
+    color: var(--color-text-primary-dark); /* Text color for contrast */
+    border-radius: 0.3rem; /* Rounded corners */
+    font-size: 0.75rem; /* Adjust font size as needed */
+    font-weight: 600; /* Make it slightly bolder */
+    text-transform: uppercase; /* Optional: Make it uppercase */
+    vertical-align: top; /* Align to the top of the adjacent text */
+    line-height: 1; /* Adjust line height as needed */
 }
 
-/* Scroll para elementos específicos */
-.max-h-64::-webkit-scrollbar {
-  width: 4.2px;
-}
-.max-h-64::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.035);
-  border-radius: 2.1px;
-}
-.max-h-64::-webkit-scrollbar-thumb {
-  background: #4F46E5;
-  border-radius: 2.1px;
-  border: 0.7px solid rgba(255, 255, 255, 0.07);
-}
-.max-h-64::-webkit-scrollbar-thumb:hover {
-  background: #7C3AED;
+body.theme-light .pro-tag {
+    color: var(--color-text-primary-light); /* Adjust for light theme if needed */
 }
 
-/* Loading Animation */
-.loading {
-  position: relative;
-  pointer-events: none;
-}
-.loading::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 1.05rem;
-  height: 1.05rem;
-  margin: -0.525rem;
-  border: 1.4px solid #7C3AED;
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+/* Tema Oscuro (Por Defecto) */
+body {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-primary-dark);
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 0.9rem; /* Reduced base font size */
 }
 
-/* Input Styles */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white;
-  transition: background-color 3500s ease-in-out 0s;
-  -webkit-box-shadow: 0 0 0px 700px #374151 inset;
+/* Tema Claro */
+body.theme-light {
+    background-color: var(--color-background-light);
+    color: var(--color-text-primary-light);
 }
 
-/* Glass Effect */
-.glass {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  border: 0.7px solid rgba(255, 255, 255, 0.14);
+/* Estilos Globales y Reutilizables */
+.container {
+    padding-left: 1rem; /* Reduced padding */
+    padding-right: 1rem; /* Reduced padding */
+    max-width: 1100px; /* Slightly reduced max width */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex; /* Enable flexbox for main container */
+    flex-direction: column; /* Stack header, main, footer vertically */
 }
 
-/* Mobile Optimizations */
-@media (max-width: 640px) {
-  .container {
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
-  }
-  h1 {
-    font-size: 1.3125rem;
-  }
-  h2 {
-    font-size: 1.05rem;
-  }
-  #saldo {
-    font-size: 1.4rem;
-  }
-  .rounded-3xl {
-    border-radius: 1.05rem;
-  }
+.content-wrapper {
+    display: flex; /* Enable flexbox for main content area */
+    flex-direction: row; /* Sidebar and main content side by side */
+    width: 100%;
+    flex-grow: 1; /* Allow content-wrapper to grow and take available space */
 }
 
-/* Focus States */
-.focus-visible:focus {
-  outline: none;
-  box-shadow: 0 0 0 2.1px rgba(124, 58, 237, 0.35);
+.main-content {
+    flex: 2; /* Main content takes 2/3 of the space */
+    padding-right: 2rem; /* Add some spacing between main content and sidebar */
 }
 
-/* Saved Panapass List Items */
-#savedPanapassList li {
-  transition: all 0.14s ease;
-}
-#savedPanapassList li:hover {
-  background-color: rgba(255, 255, 255, 0.035);
-}
-#savedPanapassList button {
-  transition: all 0.14s ease;
-}
-#savedPanapassList button:hover {
-  transform: translateY(-0.7px);
+.sidebar {
+    flex: 1; /* Sidebar takes 1/3 of the space */
+    padding-left: 1rem;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+
+/* Estilo para "PanaSaldo" en la cabecera en TEMA OSCURO */
+body.theme-dark header h1 {
+    color: var(--color-text-primary-dark); /* Usamos la variable de color blanco del tema oscuro */
 }
 
-/* Card Shadows */
-.shadow-2xl {
-  box-shadow: 0 17.5px 35px -8.4px rgba(0, 0, 0, 0.175);
+/* Estilo para "PanaSaldo" en la cabecera en TEMA CLARO */
+body.theme-light header h1 {
+    color: #1F2937; /* Color negro o gris muy oscuro para el tema claro */
 }
 
-/* Gradient Text */
-.gradient-text {
-  background: linear-gradient(to right, #4F46E5, #7C3AED);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Resto de estilos para h1 (si ya tienes, mantenlos, sólo ajustamos el color) */
+h1 {
+    font-size: 2rem; /* Tamaño de fuente (puedes mantener el que ya tengas) */
+    font-weight: 700;
+    letter-spacing: -0.05rem;
+    line-height: 2.2rem;
+    margin-bottom: 1rem; /* Reduced margin */
 }
 
-/* Chart Container */
-.chart-container {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  border: 0.7px solid rgba(255, 255, 255, 0.14);
-  border-radius: 0.7rem;
-  padding: 0.7rem;
-  margin-top: 1.4rem;
+h2 {
+    font-size: 1.5rem; /* Further reduced h2 size */
+    font-weight: 600;
+    line-height: 1.8rem;
 }
 
-/* Additional Info Section */
-.additional-info {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  border: 0.7px solid rgba(255, 255, 255, 0.14);
-  border-radius: 0.7rem;
-  padding: 1.05rem;
-  margin-top: 1.4rem;
-}
-.additional-info h3 {
-  font-size: 1.05rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 1.05rem;
-}
-.additional-info p {
-  color: #D1D5DB;
-  margin-bottom: 0.35rem;
-}
-.additional-info ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-.additional-info ul li {
-  padding: 0.525rem 0.7rem;
-  background: rgba(255, 255, 255, 0.035);
-  border-radius: 0.35rem;
-  margin-bottom: 0.35rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.14s ease;
-}
-.additional-info ul li:hover {
-  background: rgba(255, 255, 255, 0.07);
-}
-.additional-info ul li span {
-  font-size: 0.63rem;
-  color: #D1D5DB;
-}
-.additional-info ul li span:first-child {
-  font-weight: bold;
-  color: white;
+h3.section-title {
+    font-size: 1.2rem; /* Further reduced section title size */
+    font-weight: 600;
+    margin-bottom: 1rem; /* Reduced margin */
+    color: var(--color-text-primary-dark);
 }
 
-/* Result Card */
-#resultSection {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(7px);
-  -webkit-backdrop-filter: blur(7px);
-  border: 0.7px solid rgba(255, 255, 255, 0.14);
-  border-radius: 0.7rem;
-  padding: 1.05rem;
-  margin-top: 1.4rem;
-}
-#resultSection .text-center {
-  text-align: center;
-}
-#resultSection .text-center p {
-  color: white;
-  font-size: 0.875rem;
-  margin-bottom: 0.35rem;
-}
-#resultSection .text-center p#saldo {
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin-bottom: 0.7rem;
-}
-#resultSection .text-center p#lastDate {
-  font-size: 0.63rem;
-  color: #D1D5DB;
+body.theme-light h3.section-title {
+    color: var(--color-text-primary-light);
 }
 
-/* Estilo para el botón "Ver más transacciones" */
-#showMoreTransactions {
-  background: linear-gradient(to right, #4F46E5, #7C3AED);
-  color: white;
-  font-weight: bold;
-  padding: 0.525rem 1.05rem;
-  border-radius: 0.525rem;
-  transition: all 0.14s ease;
-  width: 100%;
-  text-align: center;
-  margin-top: 0.7rem;
-}
-#showMoreTransactions:hover {
-  background: linear-gradient(to right, #4338CA, #6D28D9);
-  transform: translateY(-0.7px);
-}
-#showMoreTransactions:active {
-  transform: translateY(0);
+p.section-description {
+    color: var(--color-text-secondary-dark);
+    line-height: 1.4rem; /* Further reduced line height */
+    margin-bottom: 1.2rem; /* Reduced margin */
+    font-size: 0.9rem; /* Further reduced paragraph size */
 }
 
-/* Estilo para la lista de transacciones recientes */
-#recentTransactions {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-#recentTransactions li {
-  padding: 0.525rem 0.7rem;
-  background: rgba(255, 255, 255, 0.035);
-  border-radius: 0.35rem;
-  margin-bottom: 0.35rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.14s ease;
-}
-#recentTransactions li:hover {
-  background: rgba(255, 255, 255, 0.07);
-}
-#recentTransactions li span {
-  font-size: 0.63rem;
-  color: #D1D5DB;
-}
-#recentTransactions li span:first-child {
-  font-weight: bold;
-  color: white;
+body.theme-light p.section-description {
+    color: var(--color-text-secondary-light);
 }
 
-/* Estilo para el scroll en el historial de saldos */
-.max-h-64 {
-  max-height: 11.2rem;
-}
-.overflow-y-auto {
-  overflow-y: auto;
-}
-.pr-2 {
-  padding-right: 0.35rem;
-}
-
-/* Animación de carga */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.card {
+    background-color: var(--color-card-dark);
+    border-radius: 0.6rem; /* Further reduced card radius */
+    padding: 1.4rem; /* Further reduced card padding */
+    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Further reduced shadow */
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--color-border-dark);
+    margin-bottom: 1.5rem; /* Added margin between cards */
 }
 
-/* Ocultar el texto "Consultar Saldo" durante la carga */
-button.loading span {
-    display: none;
+body.theme-light .card {
+    background-color: var(--color-card-light);
+    border-color: var(--color-border-light);
 }
 
-/* Añadir el círculo giratorio */
-button.loading::after {
-    content: "";
+.btn-primary {
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    color: var(--color-text-primary-dark);
+    font-weight: 600;
+    padding: 0.7rem 1.2rem; /* Further reduced button padding */
+    border-radius: 0.5rem; /* Further reduced button radius */
+    transition: background-image 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 0.3rem 0.6rem var(--color-shadow); /* Further reduced shadow */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Further reduced gap */
+    font-size: 0.9rem; /* Further reduced font size */
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(to right, var(--color-primary-hover), var(--color-secondary-hover));
+    transform: scale(1.03);
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+    background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary)); /*Active state color change*/
+    box-shadow: none; /*Remove shadow on active state*/
+}
+
+.btn-primary.active-loading {
+    position: relative;
+    pointer-events: none; /* Disable clicks during loading */
+    color: rgba(255, 255, 255, 0.7); /* Lighten text color during loading */
+}
+
+.btn-primary.active-loading::after {
+    content: '';
     position: absolute;
-    top: 50%;
     left: 50%;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
-    border: 3px solid #7C3AED;
-    border-top-color: transparent;
+    top: 50%;
+    margin-left: -0.75em;
+    margin-top: -0.75em;
+    border: 0.5em solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
+    border-top-color: #fff;
+    width: 1.5em;
+    height: 1.5em;
     animation: spin 1s linear infinite;
 }
 
-/* Asegurarse de que el botón tenga posición relativa y un tamaño mínimo */
-button[type="submit"] {
-    position: relative;
-    min-width: 120px; /* Tamaño mínimo para evitar que el botón se encoja */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+
+body.theme-light .btn-primary {
+    color: var(--color-text-primary-light);
+}
+
+.input-panapass {
+    width: 100%;
+    padding: 0.7rem; /* Further reduced input padding */
+    border-radius: 0.5rem; /* Further reduced input radius */
+    border: 2px solid var(--color-border-dark);
+    background-color: var(--color-card-dark);
+    color: var(--color-text-primary-dark);
+    font-size: 0.9rem; /* Further reduced input font size */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+body.theme-light .input-panapass {
+    border-color: var(--color-border-light);
+    background-color: var(--color-card-light);
+    color: var(--color-text-primary-light);
+}
+
+.input-panapass::placeholder {
+    color: var(--color-text-secondary-dark);
+    opacity: 0.8;
+}
+
+body.theme-light .input-panapass::placeholder {
+    color: var(--color-text-secondary-light);
+}
+
+.icon-input {
+    width: 0.9rem; /* Further reduced icon size */
+    height: 0.9rem; /* Further reduced icon size */
+    color: var(--color-text-secondary-dark);
+    transition: color 0.3s ease;
+    stroke-width: 2; /* SVG icon quality - slightly thicker stroke for smaller size */
+    vertical-align: middle;
+    fill: none; /* Asegúrate de que fill: none; siga aquí, importante para la lupa */
+}
+
+body.theme-light .icon-input {
+    color: var(--color-text-secondary-light);
+}
+
+.result-card {
+    background-color: var(--color-card-dark);
+    border-radius: 0.6rem; /* Further reduced result card radius */
+    padding: 1.8rem; /* Further reduced result card padding */
+    text-align: center;
+    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Further reduced shadow */
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--color-border-dark);
+}
+
+body.theme-light .result-card {
+    background-color: var(--color-card-light);
+    border-color: var(--color-border-light);
+}
+
+.result-icon {
+    width: 2.8rem; /* Further reduced result icon size */
+    height: 2.8rem; /* Further reduced result icon size */
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.8rem; /* Reduced margin */
+}
+
+.result-icon svg {
+    width: 1.4rem; /* Further reduced result svg icon size */
+    height: 1.4rem; /* Further reduced result svg icon size */
+    fill: var(--color-text-primary-dark);
+    transition: fill 0.3s ease;
+    stroke-width: 2; /* Slightly thicker stroke for smaller size */
+}
+
+body.theme-light .result-icon svg {
+    fill: var(--color-text-primary-light);
+}
+
+#saldo {
+    font-size: 1.5rem; /* Further reduced saldo size */
+    font-weight: 700;
+    margin-bottom: 0.4rem; /* Reduced margin */
+    letter-spacing: -0.025rem;
+}
+
+#lastDate {
+    font-size: 0.85rem; /* Further reduced last date size */
+    color: var(--color-text-secondary-dark);
+}
+
+.additional-info-card {
+    background-color: var(--color-card-dark);
+    border-radius: 0.6rem; /* Further reduced additional info card radius */
+    padding: 1.4rem; /* Further reduced additional info card padding */
+    margin-top: 1.4rem; /* Reduced margin */
+    box-shadow: 0 0.6rem 1.2rem var(--color-shadow); /* Further reduced shadow */
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--color-border-dark);
+}
+
+body.theme-light .additional-info-card {
+    background-color: var(--color-card-light);
+    border-color: var(--color-border-light);
+}
+
+.additional-info-title {
+    font-size: 1.2rem; /* Further reduced additional info title size */
+    font-weight: 600;
+    margin-bottom: 0.8rem; /* Reduced margin */
+}
+
+.info-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem; /* Further reduced info item radius */
+    padding: 0.7rem 1rem; /* Further reduced info item padding */
+    margin-bottom: 0.6rem; /* Reduced margin */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem; /* Further reduced font size */
+}
+
+.info-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.info-label {
+    font-weight: 600;
+    font-size: 0.95rem; /* Further reduced info label size */
+}
+
+.info-value {
+    font-size: 0.85rem; /* Further reduced info value size */
+    color: var(--color-text-secondary-dark);
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 10rem; /* Further reduced history max height */
+    overflow-y: auto;
+    padding-right: 0.4rem; /* Reduced padding */
+}
+
+.history-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem; /* Further reduced history item radius */
+    padding: 0.7rem 1rem; /* Further reduced history item padding */
+    margin-bottom: 0.5rem; /* Reduced margin */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem; /* Further reduced font size */
+}
+
+.history-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.history-value {
+    font-weight: 600;
+    font-size: 0.85rem; /* Further reduced history value size */
+}
+
+.history-date {
+    font-size: 0.75rem; /* Further reduced history date size */
+    color: var(--color-text-secondary-dark);
+}
+
+.show-more-btn {
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    color: var(--color-text-primary-dark);
+    font-weight: 600;
+    padding: 0.5rem 1rem; /* Further reduced show more button padding */
+    border-radius: 0.5rem; /* Further reduced show more button radius */
+    transition: background-image 0.3s ease, transform 0.2s ease;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.8rem; /* Reduced margin */
+    box-shadow: 0 0.3rem 0.6rem var(--color-shadow); /* Further reduced shadow */
+    font-size: 0.85rem; /* Further reduced font size */
+}
+
+.show-more-btn:hover {
+    background-image: linear-gradient(to right, var(--color-primary-hover), var(--color-secondary-hover));
+    transform: scale(1.03);
+}
+
+.show-more-btn:active {
+    transform: scale(0.97);
+}
+
+.saved-panapass-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.saved-panapass-item {
+    padding: 1rem; /* Further reduced saved panapass item padding */
+    border-bottom: 1px solid var(--color-border-dark);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.theme-light .saved-panapass-item {
+    border-color: var(--color-border-light);
+}
+
+.saved-panapass-item:last-child {
+    border-bottom: none;
+}
+
+.saved-panapass-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.panapass-icon {
+    width: 2.2rem; /* Further reduced panapass icon size */
+    height: 2.2rem; /* Further reduced panapass icon size */
+    border-radius: 0.5rem; /* Further reduced panapass icon radius */
+    background-color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.8rem; /* Reduced margin */
+    flex-shrink: 0;
+}
+
+.panapass-icon svg {
+    width: 1.1rem; /* Further reduced panapass svg icon size */
+    height: 1.1rem; /* Further reduced panapass svg icon size */
+    fill: var(--color-text-primary-dark);
+    transition: fill 0.3s ease;
+    stroke-width: 2; /* Slightly thicker stroke for smaller size */
+}
+
+body.theme-light .panapass-icon svg {
+    fill: var(--color-text-primary-light);
+}
+
+.panapass-number-col {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.panapass-number {
+    font-weight: 600;
+    font-size: 0.95rem; /* Further reduced panapass number size */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.panapass-actions button {
+    padding: 0.5rem 0.8rem; /* Further reduced panapass actions button padding */
+    border-radius: 0.3rem; /* Further reduced panapass actions button radius */
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    margin-left: 0.3rem; /* Reduced margin */
+    font-size: 0.85rem; /* Further reduced font size */
+}
+
+.panapass-actions button:hover {
+    transform: translateY(-0.2rem);
+}
+
+.panapass-actions button[data-action="consult"] {
+    background-color: var(--color-primary);
+    color: var(--color-text-primary-dark);
+}
+
+.panapass-actions button[data-action="consult"]:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.panapass-actions button[data-action="delete"] {
+    background-color: #DC2626;
+    color: var(--color-text-primary-dark);
+}
+
+.panapass-actions button[data-action="delete"]:hover {
+    background-color: #B91C1C;
+}
+
+/* Animación Fade-In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Reduced initial displacement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Scrollbar Personalizada (Webkit - Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 7px; /* Further reduced scrollbar width */
+    height: 7px; /* Further reduced scrollbar height */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-card-dark);
+}
+
+body.theme-light ::-webkit-scrollbar-track {
+    background-color: var(--color-card-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 0.4rem; /* Further reduced scrollbar thumb radius */
+    border: 2px solid var(--color-card-dark);
+}
+
+body.theme-light ::-webkit-scrollbar-thumb {
+    border-color: var(--color-card-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* Placeholder Skeleton Loading (Efecto Esqueleto) */
+.skeleton-loading {
+    background: linear-gradient(90deg, var(--color-border-dark) 25%, rgba(55, 65, 81, 0.5) 50%, var(--color-border-dark) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-animation 1.8s linear infinite;
+    border-radius: 0.6rem; /* Further reduced skeleton loading radius */
+}
+
+body.theme-light .skeleton-loading {
+    background: linear-gradient(90deg, var(--color-border-light) 25%, rgba(229, 231, 235, 0.5) 50%, var(--color-border-light) 75%);
+}
+
+@keyframes skeleton-animation {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Micro-interacción botón Consultar Saldo (Active state mejorado) */
+button[type="submit"]:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+/* Conmutador Tema */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem; /* Further reduced theme switcher padding */
+    border-radius: 50%;
+    background-color: var(--color-card-dark);
+    border: 1px solid var(--color-border-dark);
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+body.theme-light .theme-switcher {
+    background-color: var(--color-card-light);
+    border-color: var(--color-border-light);
+}
+
+.theme-switcher:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.08);
+}
+
+.theme-switcher:active {
+    transform: scale(0.95);
+}
+
+.theme-icon {
+    width: 1rem; /* Further reduced theme icon size */
+    height: 1rem; /* Further reduced theme icon size */
+}
+
+/* Estilos del icono para el tema claro */
+.theme-light #themeIcon.light-theme-icon {
+    stroke: #374151; /* Ejemplo: Gris oscuro para el trazo del icono de luna en tema claro */
+}
+
+/* Estilos del icono para el tema oscuro (opcional, ajusta si es necesario) */
+#themeIcon.dark-theme-icon,
+.dark-theme-icon {
+    stroke: #FFFFFF; /* Ejemplo: Blanco para el trazo del icono de sol en tema oscuro */
+}
+
+/* Estilos para el Feed de Twitter (puedes ajustarlos según necesites) */
+.twitter-tweet-card {
+    margin-top: 1.5rem; /* Reduced margin */
+}
+
+blockquote.twitter-tweet {
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--color-border-dark); /* Add border to Twitter Embed */
+    border-radius: 0.6rem; /* Rounded corners for embed */
+    padding: 1rem; /* Padding inside embed */
+    background-color: var(--color-card-dark); /* Background color to match cards */
+    max-width: 550px; /* Limit max width of tweet embed */
+    margin-left: auto;  /* Center the tweet embed */
+    margin-right: auto; /* Center the tweet embed */
+}
+
+body.theme-light blockquote.twitter-tweet {
+    border-color: var(--color-border-light);
+    background-color: var(--color-card-light);
+}
+
+/* Estilos para la sección de noticias en la sidebar */
+.sidebar-news-section {
+    margin-top: 1.5rem;
+}
+
+.sidebar-news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-news-item {
+    margin-bottom: 1rem; /* Spacing between news items */
+    padding: 0.8rem; /* Reduced padding for sidebar news items */
+    border-radius: 0.5rem; /* Reduced border radius for sidebar news items */
+    background-color: var(--color-card-dark);
+    border: 1px solid var(--color-border-dark);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: flex; /* Enable flexbox for news item */
+    align-items: flex-start; /* Align items to the start */
+}
+
+body.theme-light .sidebar-news-item {
+    background-color: var(--color-card-light);
+    border-color: var(--color-border-light);
+}
+
+.sidebar-news-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-news-item-image {
+    width: 60px; /* Fixed width for sidebar news images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 0.4rem; /* Reduced image border radius */
+    margin-right: 0.8rem; /* Spacing between image and text */
+    display: block; /* Ensure image behaves as block for margin to work */
+    object-fit: cover; /* cover image area, cropping if necessary */
+    object-position: center; /* center image within its container */
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.sidebar-news-item-content {
+    flex-grow: 1; /* Allow content to take remaining space */
+    min-width: 0; /* Allow content to shrink below its natural size */
+}
+
+
+.sidebar-news-item-title {
+    font-weight: bold;
+    margin-bottom: 0.3rem; /* Reduced margin */
+    font-size: 0.9rem; /* Reduced title font size */
+    line-height: 1.2rem; /* Reduced line height */
+    overflow: hidden;      /* Enable text clipping */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
+    display: -webkit-box;    /* Use flexbox for clipping */
+    -webkit-line-clamp: 2;  /* Clip text to 2 lines */
+    -webkit-box-orient: vertical;
+}
+
+.sidebar-news-item-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.85rem; /* Reduced link font size */
+}
+
+.sidebar-news-item-link:hover {
+    text-decoration: underline;
+    color: var(--color-primary-hover);
+}
+
+/* Estilos para el Footer */
+footer {
+    margin-top: 2rem; /* Aseguramos un margen superior un poco mayor */
+    text-align: center;
+    color: var(--color-text-secondary-dark); /* Usamos el color de texto secundario */
+    font-size: 0.8rem; /* Reducimos un poco el tamaño de la fuente para el footer */
+    line-height: 1.5; /* Aumentamos el interlineado para mejor legibilidad */
+    padding: 1rem 0; /* Añadimos un poco de padding vertical */
+    word-wrap: break-word; /* IMPORTANTE: Permite que las palabras largas se rompan y envuelvan */
+    overflow-wrap: break-word; /* Alternativa para word-wrap, para mayor compatibilidad */
+}
+
+body.theme-light footer {
+    color: var(--color-text-secondary-light); /* Color de texto secundario para tema claro */
+}
+
+footer p {
+    margin-bottom: 0.7rem; /* Espacio entre párrafos del footer */
+    font-size: 0.85rem; /* Tamaño de fuente para los párrafos dentro del footer */
+    line-height: 1.6; /* Interlineado para párrafos del footer */
+    word-wrap: break-word; /* IMPORTANTE también para los <p> dentro del footer */
+    overflow-wrap: break-word;
+}
+
+footer p:last-child {
+    margin-bottom: 0; /* Elimina el margen inferior del último párrafo */
+}
+
+/* Ajuste para el texto del copyright (si quieres un estilo diferente) */
+footer p:first-child {
+    font-size: 0.9rem; /*  Tamaño un poco mayor para el copyright si deseas */
+    font-weight: 600; /*  Resaltar un poco el copyright si deseas */
 }
