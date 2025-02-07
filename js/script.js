@@ -552,7 +552,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!/^\d{6,10}$/.test(panapass)) {
             showToast(
-                "Por favor, ingresa un numero de Panapass valido (6-10 dígitos)",
+                "Por favor, ingresa un numero de Panapass valido (6-10 digitos)",
                 "error"
             );
             return;
