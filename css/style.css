@@ -777,3 +777,208 @@ footer p:first-child {
     font-size: 0.9rem;     /*  Tamano un poco mayor para el copyright si deseas */
     font-weight: 600;      /*  Resaltar un poco el copyright si deseas */
 }
+
+/* Media Queries para Dispositivos Móviles (Android/Teléfonos) */
+/*
+    Se utilizan Media Queries para aplicar estilos específicos cuando la pantalla
+    tiene un ancho máximo de 768px (típico de teléfonos móviles).
+    Estos estilos ajustan el tamaño de fuente, el padding, el margen y la disposición
+    de algunos elementos para mejorar la legibilidad y la comodidad en pantallas pequeñas.
+*/
+@media (max-width: 768px) {
+    body {
+        font-size: 0.95rem; /* Aumenta ligeramente la fuente base en móviles para mejor legibilidad */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Reduce ligeramente el tamaño de h1 en móviles */
+        line-height: 2rem;
+        margin-bottom: 0.8rem; /* Reduce el margen inferior de h1 en móviles */
+    }
+
+    h2 {
+        font-size: 1.4rem; /* Reduce ligeramente el tamaño de h2 en móviles */
+        line-height: 1.7rem;
+    }
+
+    h3.section-title {
+        font-size: 1.1rem; /* Reduce ligeramente el tamaño de h3 en móviles */
+        margin-bottom: 0.8rem; /* Reduce el margen inferior de h3 en móviles */
+    }
+
+    p.section-description {
+        font-size: 0.95rem; /* Aumenta ligeramente el tamaño de los párrafos en móviles para mejor legibilidad */
+        line-height: 1.5rem;
+        margin-bottom: 1rem; /* Reduce el margen inferior de los párrafos en móviles */
+    }
+
+    .container {
+        padding-left: 0.8rem; /* Reduce el padding horizontal del contenedor en móviles */
+        padding-right: 0.8rem;
+    }
+
+    .content-wrapper {
+        flex-direction: column; /* Apila la sidebar y el contenido principal verticalmente en móviles */
+    }
+
+    .main-content {
+        flex: 1; /* El contenido principal ocupa todo el ancho disponible en móviles */
+        padding-right: 0; /* Elimina el padding derecho del contenido principal en móviles */
+        padding-bottom: 1.5rem; /* Añade padding inferior al contenido principal para separarlo de la sidebar apilada */
+    }
+
+    .sidebar {
+        flex: 1; /* La sidebar ocupa todo el ancho disponible en móviles */
+        padding-left: 0; /* Elimina el padding izquierdo de la sidebar en móviles */
+    }
+
+    .card {
+        padding: 1.2rem; /* Reduce el padding de las tarjetas en móviles */
+        border-radius: 0.5rem; /* Reduce el radio del borde de las tarjetas en móviles */
+        margin-bottom: 1.2rem; /* Reduce el margen inferior de las tarjetas en móviles */
+    }
+
+    .btn-primary {
+        padding: 0.6rem 1rem; /* Reduce el padding de los botones primarios en móviles */
+        font-size: 1rem; /* Aumenta ligeramente el tamaño de fuente de los botones primarios en móviles */
+        border-radius: 0.4rem; /* Reduce el radio del borde de los botones primarios en móviles */
+    }
+
+    .input-panapass {
+        padding: 0.6rem; /* Reduce el padding de los inputs en móviles */
+        font-size: 1rem; /* Aumenta ligeramente el tamaño de fuente de los inputs en móviles */
+        border-radius: 0.4rem; /* Reduce el radio del borde de los inputs en móviles */
+    }
+
+    .result-card {
+        padding: 1.5rem; /* Reduce el padding de las tarjetas de resultado en móviles */
+        border-radius: 0.5rem; /* Reduce el radio del borde de las tarjetas de resultado en móviles */
+    }
+
+    .result-icon {
+        width: 2.5rem; /* Reduce ligeramente el tamaño del icono de resultado en móviles */
+        height: 2.5rem;
+        margin-bottom: 0.6rem; /* Reduce el margen inferior del icono de resultado en móviles */
+    }
+
+    .result-icon svg {
+        width: 1.2rem; /* Reduce ligeramente el tamaño del SVG dentro del icono de resultado en móviles */
+        height: 1.2rem;
+    }
+
+    #saldo {
+        font-size: 1.4rem; /* Reduce ligeramente el tamaño del saldo en móviles */
+    }
+
+    #lastDate {
+        font-size: 0.8rem; /* Reduce ligeramente el tamaño de la fecha en móviles */
+    }
+
+    .additional-info-card {
+        padding: 1.2rem; /* Reduce el padding de las tarjetas de información adicional en móviles */
+        border-radius: 0.5rem; /* Reduce el radio del borde de las tarjetas de información adicional en móviles */
+        margin-top: 1.2rem; /* Reduce el margen superior de las tarjetas de información adicional en móviles */
+    }
+
+    .additional-info-title {
+        font-size: 1.1rem; /* Reduce ligeramente el tamaño de los títulos de información adicional en móviles */
+        margin-bottom: 0.6rem; /* Reduce el margen inferior de los títulos de información adicional en móviles */
+    }
+
+    .info-item {
+        padding: 0.6rem 0.8rem; /* Reduce el padding de los items de información en móviles */
+        border-radius: 0.4rem; /* Reduce el radio del borde de los items de información en móviles */
+        margin-bottom: 0.5rem; /* Reduce el margen inferior de los items de información en móviles */
+        font-size: 1rem; /* Aumenta ligeramente el tamaño de fuente de los items de información en móviles */
+    }
+
+    .info-label {
+        font-size: 1.05rem; /* Aumenta ligeramente el tamaño de fuente de los labels de información en móviles */
+    }
+
+    .info-value {
+        font-size: 0.95rem; /* Aumenta ligeramente el tamaño de fuente de los values de información en móviles */
+    }
+
+    .history-item {
+        padding: 0.6rem 0.8rem; /* Reduce el padding de los items del historial en móviles */
+        border-radius: 0.4rem; /* Reduce el radio del borde de los items del historial en móviles */
+        margin-bottom: 0.4rem; /* Reduce el margen inferior de los items del historial en móviles */
+        font-size: 1rem; /* Aumenta ligeramente el tamaño de fuente de los items del historial en móviles */
+    }
+
+    .history-value {
+        font-size: 0.95rem; /* Aumenta ligeramente el tamaño de fuente de los values del historial en móviles */
+    }
+
+    .history-date {
+        font-size: 0.7rem; /* Reduce ligeramente el tamaño de fuente de las fechas del historial en móviles */
+    }
+
+    .show-more-btn {
+        padding: 0.4rem 0.8rem; /* Reduce el padding del botón "Mostrar más" en móviles */
+        font-size: 0.9rem; /* Aumenta ligeramente el tamaño de fuente del botón "Mostrar más" en móviles */
+        border-radius: 0.4rem; /* Reduce el radio del borde del botón "Mostrar más" en móviles */
+        margin-top: 0.6rem; /* Reduce el margen superior del botón "Mostrar más" en móviles */
+    }
+
+    .saved-panapass-item {
+        padding: 0.8rem; /* Reduce el padding de los items de Panapass guardados en móviles */
+    }
+
+    .panapass-icon {
+        width: 2rem; /* Reduce ligeramente el tamaño del icono de Panapass en móviles */
+        height: 2rem;
+        margin-right: 0.6rem; /* Reduce el margen derecho del icono de Panapass en móviles */
+    }
+
+    .panapass-icon svg {
+        width: 1rem; /* Reduce ligeramente el tamaño del SVG dentro del icono de Panapass en móviles */
+        height: 1rem;
+    }
+
+    .panapass-number {
+        font-size: 1rem; /* Aumenta ligeramente el tamaño de fuente del número de Panapass en móviles */
+    }
+
+    .panapass-actions button {
+        padding: 0.4rem 0.6rem; /* Reduce el padding de los botones de acción en móviles */
+        font-size: 0.9rem; /* Aumenta ligeramente el tamaño de fuente de los botones de acción en móviles */
+        border-radius: 0.2rem; /* Reduce el radio del borde de los botones de acción en móviles */
+        margin-left: 0.2rem; /* Reduce el margen izquierdo entre los botones de acción en móviles */
+    }
+
+    .sidebar-news-item {
+        padding: 0.6rem; /* Reduce el padding de los items de noticias de la barra lateral en móviles */
+        border-radius: 0.4rem; /* Reduce el radio del borde de los items de noticias de la barra lateral en móviles */
+        margin-bottom: 0.8rem; /* Reduce el margen inferior de los items de noticias de la barra lateral en móviles */
+    }
+
+    .sidebar-news-item-image {
+        width: 50px; /* Reduce el ancho de las imágenes de noticias de la barra lateral en móviles */
+        margin-right: 0.6rem; /* Reduce el margen derecho de las imágenes de noticias de la barra lateral en móviles */
+        border-radius: 0.3rem; /* Reduce el radio del borde de las imágenes de noticias de la barra lateral en móviles */
+    }
+
+    .sidebar-news-item-title {
+        font-size: 0.85rem; /* Reduce ligeramente el tamaño de fuente de los títulos de noticias de la barra lateral en móviles */
+        line-height: 1.1rem; /* Reduce la altura de línea de los títulos de noticias de la barra lateral en móviles */
+    }
+
+    .sidebar-news-item-link {
+        font-size: 0.8rem; /* Reduce ligeramente el tamaño de fuente de los enlaces de noticias de la barra lateral en móviles */
+    }
+
+    footer {
+        font-size: 0.85rem; /* Aumenta ligeramente el tamaño de fuente del footer en móviles para mejor legibilidad */
+        padding: 1.2rem 0; /* Aumenta ligeramente el padding vertical del footer en móviles */
+    }
+
+    footer p {
+        font-size: 0.9rem; /* Aumenta ligeramente el tamaño de fuente de los párrafos del footer en móviles para mejor legibilidad */
+    }
+
+    footer p:first-child {
+        font-size: 0.95rem; /* Aumenta ligeramente el tamaño de fuente del copyright del footer en móviles para mejor legibilidad */
+    }
+}
