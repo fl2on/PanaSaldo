@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Sitemap: https://fl2on.github.io/PanaSaldo/sitemap.xml
