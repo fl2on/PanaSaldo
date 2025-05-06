@@ -42,7 +42,17 @@ Para cualquier trámite oficial, gestión de cuenta o inconvenientes con tu **Pa
 
 ## 📸 Screenshot  
 
-![image](https://github.com/user-attachments/assets/d53ded24-20d4-4db1-b1aa-bd8db04239b0)
+![image](https://github.com/user-attachments/assets/15efcd4e-8ca5-4709-ad4f-50c3dddd100e)
+
+![image](https://github.com/user-attachments/assets/3f91f52d-b3bc-4c73-b127-26f5897ad38e)
+
+![image](https://github.com/user-attachments/assets/dab3ac71-fbab-47f0-8a05-a148402321b9)
+
+![image](https://github.com/user-attachments/assets/ad5bfc23-2724-4256-884a-786c77fb6276)
+
+![image](https://github.com/user-attachments/assets/0436332b-b6da-4806-9450-a520e8c4c507)
+
+![image](https://github.com/user-attachments/assets/be2748ce-d248-4b8a-812b-f694ed52841c)
 
 ## 🛠️ Tecnologías Usadas  
 
@@ -67,7 +77,7 @@ Para cualquier trámite oficial, gestión de cuenta o inconvenientes con tu **Pa
 Puedes hacer consultas automáticas usando parámetros en la URL:  
 
 ```bash
-https://fl2on.github.io/PanaSaldo/?panapass=1234567890
+https://panasaldo-dashboard.vercel.app/?panapass=1234567890
 ```
 
 ## 👨‍💻 Créditos  
