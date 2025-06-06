@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function scrapeTraficoPanamaNewsSidebar() {
         try {
             const corsProxyUrl = 'https://corsproxy.io/?url=';
-            const targetUrl = 'https://www.traficopanama.com.pa/nacionales/';
+            const targetUrl = 'https://traficopanama.com.pa/nacionales/';
             const response = await fetch(corsProxyUrl + targetUrl);
             if (!response.ok) {
                 throw new Error(`Error fetching news: ${response.status} ${response.statusText}`);
