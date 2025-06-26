@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="${imageUrl}" alt="${title}" class="sidebar-news-item-image">
                     <div class="sidebar-news-item-content">
                       <h4 class="sidebar-news-item-title">${title}</h4>
-                      <a href="https://www.traficopanama.com.pa${link}" class="sidebar-news-item-link" target="_blank">Leer mas</a>
+                      <a href="https://traficopanama.com.pa${link}" class="sidebar-news-item-link" target="_blank">Leer mas</a>
                     </div>
                   </li>
                 `;
