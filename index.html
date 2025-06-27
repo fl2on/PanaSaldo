@@ -184,6 +184,36 @@
             <p>Este sitio es una demostración y no está afiliado a ENACorredores de Panamá. La consulta de saldo se realiza utilizando una API.</p>
         </footer>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                Swal.fire({
+                    title: '¡Nueva Versión Disponible!',
+                    text: '¿Quieres ir a la nueva versión de PanaSaldo con más funcionalidades?',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: 'var(--color-primary)',
+                    cancelButtonColor: '#718096',
+                    confirmButtonText: 'Ir a la nueva versión',
+                    cancelButtonText: 'Permanecer aquí',
+                    allowOutsideClick: true,
+                    background: 'var(--color-background, #121212)',
+                    backdrop: `
+                    rgba(0,0,0,0.7)
+                `,
+                    customClass: {
+                        popup: 'custom-swal-popup',
+                        title: 'text-white',
+                        content: 'text-gray-300'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'https://panasaldo-dashboard.vercel.app/';
+                    }
+                });
+            }, 1500);
+        });
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>
