@@ -316,9 +316,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const link = titleElement ? titleElement.getAttribute("href") : "#";
                 const title = titleElement ? titleElement.textContent.trim() : "Titulo no disponible";
                 const imageElement = post.querySelector(".float-shadow img");
-                const imageUrl = imageElement
-                    ? imageElement.getAttribute("src")
-                    : "img/placeholder-news.jpg"; // Default placeholder image
+                const imageUrl = imageElement ? imageElement.getAttribute("src").replace("://www.", "://") : "img/placeholder-news.jpg";
+
 
                 newsItemsHTML += `
                   <li class="sidebar-news-item">
