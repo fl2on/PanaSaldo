@@ -339,7 +339,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
     // Consulta de Saldo (sin cambios relevantes en la logica principal, solo clases CSS actualizadas)
     async function consultarSaldo(panapass, retries = 3) {
         if (isRequestInProgress) {
