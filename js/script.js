@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const response = await fetch(
-                `https://corsproxy.io/?url=https://thingproxy.freeboard.io/fetch/http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`,
+                `https://corsproxy.io/?url=http://api.jlsoftwareapp.com/panapass/get_by_number.php?panapass=${panapass}`,
                 {
                     headers: {
                         "User-Agent":
@@ -693,3 +693,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
