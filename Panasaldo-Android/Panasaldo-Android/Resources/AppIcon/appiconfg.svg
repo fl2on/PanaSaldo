@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="432" height="432" viewBox="0 0 432 432" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<!-- Autopista/Carretera simplificada -->
+	<g transform="translate(216, 130)">
+		<!-- Carretera -->
+		<path d="M -70 -80 L -50 100 L 50 100 L 70 -80 Z" fill="#1F2937"/>
+
+		<!-- Líneas amarillas de carretera -->
+		<rect x="-7" y="-60" width="14" height="35" rx="3" fill="#FBBF24"/>
+		<rect x="-7" y="-15" width="14" height="35" rx="3" fill="#FBBF24"/>
+		<rect x="-7" y="30" width="14" height="35" rx="3" fill="#FBBF24"/>
+		<rect x="-7" y="75" width="14" height="20" rx="3" fill="#FBBF24"/>
+	</g>
+
+	<!-- Tarjeta Panapass -->
+	<g transform="translate(216, 250)">
+		<rect x="-100" y="-55" width="200" height="110" rx="14" fill="white" stroke="#E5E7EB" stroke-width="3"/>
+
+		<!-- Chip -->
+		<rect x="-78" y="-32" width="44" height="33" rx="5" fill="#FBBF24"/>
+		<rect x="-74" y="-28" width="36" height="25" rx="3" fill="#F59E0B"/>
+		<line x1="-70" y1="-20" x2="-42" y2="-20" stroke="#D97706" stroke-width="1.5"/>
+		<line x1="-70" y1="-12" x2="-42" y2="-12" stroke="#D97706" stroke-width="1.5"/>
+
+		<!-- Texto "PANAPASS" simulado -->
+		<rect x="-75" y="10" width="60" height="8" rx="2" fill="#9CA3AF"/>
+		<rect x="-75" y="25" width="80" height="8" rx="2" fill="#D1D5DB"/>
+	</g>
+
+	<!-- Símbolo de dólar destacado -->
+	<g transform="translate(216, 360)">
+		<circle cx="0" cy="0" r="50" fill="#7C3AED"/>
+		<circle cx="0" cy="0" r="42" fill="white"/>
+		<text x="0" y="22" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#7C3AED" text-anchor="middle">$</text>
+	</g>
+</svg>

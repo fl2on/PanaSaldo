@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Panasaldo_Android.MainPage"
+             Title="Panasaldo"
+             BackgroundColor="#000000">
+
+    <Grid BackgroundColor="#000000">
+        <!-- WebView -->
+        <WebView
+            x:Name="MyWebView"
+            Source="https://panasaldo-dashboard.vercel.app/"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand"
+            BackgroundColor="#000000"
+            Navigating="OnWebViewNavigating"
+            Navigated="OnWebViewNavigated"/>
+
+        <!-- Loading Indicator - Tema oscuro como tu web -->
+        <Grid x:Name="LoadingOverlay"
+              BackgroundColor="#000000"
+              IsVisible="True">
+            <VerticalStackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Spacing="20">
+                <ActivityIndicator
+                    IsRunning="True"
+                    Color="#7C3AED"
+                    WidthRequest="50"
+                    HeightRequest="50"/>
+                <Label
+                    Text="Cargando..."
+                    FontSize="16"
+                    TextColor="#FFFFFF"
+                    HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Error View - Tema oscuro -->
+        <Grid x:Name="ErrorView"
+              BackgroundColor="#000000"
+              IsVisible="False">
+            <VerticalStackLayout
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Spacing="20"
+                Padding="40">
+                <Label
+                    Text="⚠️"
+                    FontSize="48"
+                    HorizontalOptions="Center"/>
+                <Label
+                    Text="Error de conexión"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    TextColor="#FFFFFF"/>
+                <Label
+                    Text="No se pudo cargar la página. Por favor, verifica tu conexión a internet."
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#CCCCCC"/>
+                <Button
+                    x:Name="RetryButton"
+                    Text="Reintentar"
+                    Clicked="OnRetryClicked"
+                    BackgroundColor="#7C3AED"
+                    TextColor="White"
+                    WidthRequest="150"
+                    CornerRadius="8"
+                    Margin="0,20,0,0"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+
+</ContentPage>

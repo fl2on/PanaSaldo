@@ -1,0 +1,28 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Panasaldo_Android"
+             x:Class="Panasaldo_Android.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Colores globales para tema oscuro -->
+            <Color x:Key="Primary">#000000</Color>
+            <Color x:Key="PrimaryDark">#000000</Color>
+            <Color x:Key="Accent">#7C3AED</Color>
+            <Color x:Key="Background">#000000</Color>
+            
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="#000000" />
+            </Style>
+            
+            <Style TargetType="Shell" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="#000000" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
