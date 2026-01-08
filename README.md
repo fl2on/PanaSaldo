@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/2c36151d-dc1f-4f3c-b85e-1ab58dea8ca8)
+<img width="1553" height="439" alt="image" src="https://github.com/user-attachments/assets/85a094e7-ca40-40ce-8827-dffb572dc426" />
 
 # 🚗 PanaSaldo
 
@@ -42,17 +42,21 @@ Para cualquier trámite oficial, gestión de cuenta o inconvenientes con tu **Pa
 
 ## 📸 Screenshot  
 
-![image](https://github.com/user-attachments/assets/15efcd4e-8ca5-4709-ad4f-50c3dddd100e)
+<img width="2549" height="1927" alt="image" src="https://github.com/user-attachments/assets/d2c83c08-733f-4eee-88c8-5bc37ca26e37" />
 
-![image](https://github.com/user-attachments/assets/3f91f52d-b3bc-4c73-b127-26f5897ad38e)
+<img width="2549" height="3003" alt="image" src="https://github.com/user-attachments/assets/1d6a5da7-bc36-4abd-b496-32296a782eb2" />
 
-![image](https://github.com/user-attachments/assets/dab3ac71-fbab-47f0-8a05-a148402321b9)
+<img width="2549" height="1780" alt="image" src="https://github.com/user-attachments/assets/b5a21dc6-c293-473a-a352-c4b7458a8515" />
 
-![image](https://github.com/user-attachments/assets/ad5bfc23-2724-4256-884a-786c77fb6276)
+<img width="2549" height="1869" alt="image" src="https://github.com/user-attachments/assets/c458a3be-de0b-4614-b1c5-34c361b909b4" />
 
-![image](https://github.com/user-attachments/assets/0436332b-b6da-4806-9450-a520e8c4c507)
+<img width="2549" height="2385" alt="image" src="https://github.com/user-attachments/assets/3a8c5be8-6012-47a4-8d49-ac7324b99158" />
 
-![image](https://github.com/user-attachments/assets/be2748ce-d248-4b8a-812b-f694ed52841c)
+<img width="2549" height="3146" alt="image" src="https://github.com/user-attachments/assets/c6b10051-9019-458f-8d11-9e6d277166a9" />
+
+<img width="2549" height="2367" alt="image" src="https://github.com/user-attachments/assets/d55d44b8-4d50-421d-9f96-9f6d487b405b" />
+
+<img width="2549" height="1500" alt="image" src="https://github.com/user-attachments/assets/9e5937fd-54e5-4aee-a790-65e8ae2b7775" />
 
 ## 🛠️ Tecnologías Usadas  
 
