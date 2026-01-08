@@ -32,7 +32,7 @@ Además de la consulta básica de saldo, **PanaSaldo** incluye funcionalidades a
 - 🔔 **Mensajes Toast:** Notificaciones discretas y elegantes con SweetAlert2.  
 - ⚡ **Rendimiento Optimizado:** Limitación de frecuencia de consulta para evitar sobrecargas.  
 
-# ⚠️ Aviso Legal y Aclaraciones
+## ⚠️ Aviso Legal y Aclaraciones
 
 **PanaSaldo** **NO** es una página oficial de **Panapass** ni está afiliada a la Empresa Nacional de Autopistas (**ENA**) de Panamá.
 
