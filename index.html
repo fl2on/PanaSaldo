@@ -1,246 +1,85 @@
 <!DOCTYPE html>
-<html lang="es" style="font-size: 90%;">
+<html lang="es">
 <head>
-    <!-- Configuración -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta Saldo Panapass Online | PanaSaldo - Saldo Panapass al Instante</title>
-    <!-- Descripción Mejorada -->
-    <meta name="description" content="Consulta tu saldo Panapass de forma instantánea y gratuita. PanaSaldo te permite verificar tu balance Panapass, ver historial de recargas y transacciones, y recibir alertas de tráfico en Panamá. La manera más rápida de consultar tu saldo.">
-    <!-- Palabras Clave Optimizadas -->
-    <meta name="keywords" content="consulta saldo panapass, panapass saldo, consultar saldo panapass online, panapass panama, consultar panapass, como saber mi saldo panapass, verificar saldo panapass, panapass consulta de saldo, panapass ena, saldo panapass gratis, panapass balance, panapass consulta, tag panapass saldo">
-    <!-- Autor y Robots -->
-    <meta name="author" content="fl2on">
-    <meta name="robots" content="index, follow">
-    <!-- Open Graph (Facebook, WhatsApp) -->
-    <meta property="og:title" content="Consulta Saldo Panapass Online | PanaSaldo - Verifica tu Balance al Instante">
-    <meta property="og:description" content="Consulta tu saldo Panapass gratis, verifica transacciones y recibe alertas de tráfico en Panamá. La herramienta más rápida para verificar tu balance Panapass sin complicaciones.">
-    <meta property="og:image" content="https://github.com/fl2on/PanaSaldo/blob/main/favicon.png?raw=true">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://fl2on.github.io/PanaSaldo/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="es_PA">
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Consulta Saldo Panapass Online | PanaSaldo - Verifica tu Balance al Instante">
-    <meta name="twitter:description" content="Consulta tu saldo Panapass gratis, verifica transacciones y recibe alertas de tráfico en Panamá. La herramienta más rápida para verificar tu balance Panapass sin complicaciones.">
-    <meta name="twitter:image" content="https://github.com/fl2on/PanaSaldo/blob/main/favicon.png?raw=true">
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://fl2on.github.io/PanaSaldo/">
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <!-- Stylesheet -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <title>PanaSaldo | Versión descontinuada</title>
 
-    <!-- Structured Data - Schema.org -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "PanaSaldo - Consulta de Saldo Panapass",
-            "url": "https://fl2on.github.io/PanaSaldo/",
-            "description": "Aplicación web para consulta rápida y gratuita de saldo Panapass en Panamá. Verifica tu balance, historial de transacciones y recibe información de tráfico actualizada.",
-            "applicationCategory": "UtilityApplication",
-            "operatingSystem": "All",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            "author": {
-                "@type": "Person",
-                "name": "fl2on"
-            },
-            "potentialAction": {
-                "@type": "ViewAction",
-                "target": "https://fl2on.github.io/PanaSaldo/"
-            }
-        }
-    </script>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="favicon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
-    <div class="container mx-auto px-6 py-8 flex flex-col min-h-screen">
-        <header class="mb-6 flex justify-between items-center">
-            <div class="flex flex-col items-start justify-center space-y-1">
-                <h1 class="text-2xl font-bold text-white tracking-tight"> PanaSaldo <span class="text-sm text-secondary-400 align-top ml-1 pro-tag">PRO</span>
-                </h1>
-                <p class="section-description" style="margin-bottom: 0.5rem;">Consulta tu saldo Panapass de forma moderna.</p>
-            </div>
-            <button id="themeSwitcher" class="theme-switcher" aria-label="Alternar tema de color">
-                <span id="themeIconContainer">
-                    <svg id="themeIcon" class="theme-icon sun dark-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5" />
-                        <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" />
+
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center text-white">
+
+    <div class="relative max-w-lg w-full mx-6">
+        <div class="absolute inset-0 bg-blue-600/20 blur-3xl rounded-full"></div>
+
+        <div class="relative bg-slate-900/80 backdrop-blur-xl border border-slate-700 rounded-2xl shadow-2xl p-8 text-center">
+            <div class="flex justify-center mb-6">
+                <div class="h-16 w-16 rounded-full bg-blue-600/20 flex items-center justify-center">
+                    <svg class="h-8 w-8 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 4h.01M5.07 19h13.86c1.54 0 2.5-1.67 1.73-3L13.73 4c-.77-1.33-2.69-1.33-3.46 0L3.34 16c-.77 1.33.19 3 1.73 3z"/>
                     </svg>
+                </div>
+            </div>
+
+            <h1 class="text-2xl font-bold tracking-tight mb-3">
+                Versión descontinuada
+            </h1>
+
+            <p class="text-slate-300 mb-4">
+                Esta versión antigua de <span class="font-semibold text-white">PanaSaldo</span>
+                ya no recibe mantenimiento y
+                <span class="text-red-400 font-semibold">no funciona correctamente</span>.
+            </p>
+
+            <p class="text-slate-400 mb-8">
+                El acceso ha sido deshabilitado. Serás redirigido automáticamente a la nueva versión.
+            </p>
+
+            <div class="flex flex-col gap-3">
+                <a
+                    href="https://panasaldo-dashboard.vercel.app/"
+                    class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 transition px-6 py-3 font-semibold shadow-lg shadow-blue-600/20"
+                >
+                    Ir a la nueva versión
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+
+                <span class="text-xs text-slate-500">
+                    Redirección automática en 3 segundos
                 </span>
-            </button>
-        </header>
-        <div class="content-wrapper">
-            <main class="main-content">
-                <section class="w-full mb-6">
-                    <div class="card">
-                        <div class="mb-4">
-                            <h3 class="section-title">Consulta de Saldo Panapass</h3>
-                            <p class="section-description">
-                                Ingresa tu número de Panapass y consulta tu saldo al instante.
-                            </p>
-                        </div>
-                        <form id="saldoForm" class="space-y-3">
-                            <div class="space-y-2">
-                                <label for="panapassInput" class="block text-sm font-semibold text-gray-300"> Número de Panapass
-                                </label>
-                                <div class="relative autocomplete">
-                                    <input
-                                        id="panapassInput"
-                                        type="text"
-                                        placeholder="Ej: 1234567890" class="input-panapass"
-                                        required
-                                        maxlength="10"
-                                    />
-                                    <div class="absolute inset-y-0 right-2 flex items-center pointer-events-none">
-                                        <svg class="icon-input" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="11" cy="11" r="8" />
-                                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <button
-                                type="submit"
-                                class="btn-primary w-full"
-                            >
-                                <svg class="icon-input" style="width: 1rem; height: 1rem;"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8" />
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                                </svg>
-                                Consultar Saldo
-                            </button>
-                        </form>
-                    </div>
-                </section>
-                <section id="resultSection" class="w-full mb-6 hidden animate-fade-in">
-                    <div id="resultCard" class="result-card">
-                        <div class="result-icon">
-                            <svg fill="none" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"></circle>
-                                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                        <h2 id="saldo" class="mb-2">Saldo</h2>
-                        <p id="lastDate" class="text-sm text-gray-500">Última Consulta: Loading...</p>
-                    </div>
-                    <div class="additional-info-card">
-                        <h3 class="additional-info-title">Información Adicional</h3>
-                        <div class="space-y-2">
-                            <div class="info-item">
-                                <span class="info-label">Saldo Disponible</span>
-                                <span id="availableBalance" class="info-value"></span>
-                            </div>
-                            <div class="info-item">
-                                <span class="info-label">Última Fecha de Consulta</span>
-                                <span id="lastConsultDate" class="info-value"></span>
-                            </div>
-                            <div class="info-item">
-                                <a href="https://ena.com.pa/" target="_blank" class="info-label" style="color: var(--color-primary); text-decoration: none;">Ir al sitio oficial de Panapass</a>
-                                <svg class="icon-input" style="stroke: var(--color-primary); width: 1rem; height: 1rem; stroke-width: 2;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m-8-3h7.5a2.25 2.25 0 012.25 2.25v7.5m-2.25-9L5.25 18.75" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="chartSection" class="w-full mb-6 hidden animate-fade-in">
-                    <div class="card">
-                        <h3 class="section-title">Historial de Saldo (Gráfico)</h3>
-                        <p class="section-description">
-                            Visualización gráfica de la evolución de tu saldo en el tiempo.
-                        </p>
-                        <div class="chart-container" style="position: relative; height:240px;">
-                            <canvas id="saldoChart"></canvas>
-                        </div>
-                    </div>
-                </section>
-                <section id="historySection" class="w-full mb-6 animate-fade-in">
-                    <div class="card">
-                        <h3 class="section-title">Historial de Saldo (Reciente)</h3>
-                        <p class="section-description">
-                            Registros de tus últimas consultas de saldo.
-                        </p>
-                        <ul id="recentTransactions" class="history-list">
-                        </ul>
-                        <button id="showMoreTransactions" class="show-more-btn" style="display: none;">Ver Historial Completo</button>
-                    </div>
-                </section>
-                <section id="savedPanapassSection" class="w-full animate-fade-in">
-                    <div class="card">
-                        <h3 class="section-title">Panapass Guardados</h3>
-                        <p class="section-description">
-                            Accede rápidamente a tus números de Panapass guardados.
-                        </p>
-                        <ul id="savedPanapassList" class="saved-panapass-list">
-                        </ul>
-                    </div>
-                </section>
-            </main>
-            <aside class="sidebar">
-                <section class="w-full mb-6 twitter-tweet-card">
-                    <div class="card">
-                        <h3 class="section-title">Últimas Noticias de Traficocpanama</h3>
-                        <div id="twitterFeed">
-                        </div>
-                    </div>
-                </section>
-                <section id="sidebarNewsSection" class="w-full sidebar-news-section animate-fade-in">
-                    <div class="card">
-                        <div id="traficoPanamaNewsContent">
-                            Cargando noticias...
-                        </div>
-                    </div>
-                </section>
-            </aside>
+            </div>
         </div>
-        <footer class="mt-12 text-center text-gray-500 text-sm">
-            <p>© <span id="copyrightYear"></span> PanaSaldo. Todos los derechos reservados.</p>
-            <p>Este sitio es una demostración y no está afiliado a ENACorredores de Panamá. La consulta de saldo se realiza utilizando una API.</p>
-        </footer>
     </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                Swal.fire({
-                    title: '¡Nueva Versión Disponible!',
-                    text: '¿Quieres ir a la nueva versión de PanaSaldo con más funcionalidades?',
-                    icon: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: 'var(--color-primary)',
-                    cancelButtonColor: '#718096',
-                    confirmButtonText: 'Ir a la nueva versión',
-                    cancelButtonText: 'Permanecer aquí',
-                    allowOutsideClick: true,
-                    background: 'var(--color-background, #121212)',
-                    backdrop: `
-                    rgba(0,0,0,0.7)
+        document.addEventListener('DOMContentLoaded', () => {
+            Swal.fire({
+                title: 'Actualización obligatoria',
+                html: `
+                    <p>La versión vieja de <strong>PanaSaldo</strong> fue descontinuada.</p>
+                    <p class="mt-2">No es posible continuar aquí.</p>
                 `,
-                    customClass: {
-                        popup: 'custom-swal-popup',
-                        title: 'text-white',
-                        content: 'text-gray-300'
-                    }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'https://panasaldo-dashboard.vercel.app/';
-                    }
-                });
-            }, 1500);
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showConfirmButton: false,
+                background: '#0f172a',
+                color: '#ffffff',
+                backdrop: 'rgba(0,0,0,0.85)'
+            });
+
+            setTimeout(() => {
+                window.location.replace('https://panasaldo-dashboard.vercel.app/');
+            }, 3000);
         });
     </script>
-    <script src="js/script.js"></script>
+
 </body>
 </html>
