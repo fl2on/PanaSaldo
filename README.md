@@ -32,13 +32,31 @@ Además de la consulta básica de saldo, **PanaSaldo** incluye funcionalidades a
 - 🔔 **Mensajes Toast:** Notificaciones discretas y elegantes con SweetAlert2.  
 - ⚡ **Rendimiento Optimizado:** Limitación de frecuencia de consulta para evitar sobrecargas.  
 
-## ⚠️ Aclaración Importante  
+# ⚠️ Aviso Legal y Aclaraciones
 
-**PanaSaldo** **NO** es una página oficial de **Panapass** ni está afiliada a la Empresa Nacional de Autopistas (**ENA**) de Panamá.  
+**PanaSaldo** **NO** es una página oficial de **Panapass** ni está afiliada a la Empresa Nacional de Autopistas (**ENA**) de Panamá.
 
-Este proyecto es una herramienta **independiente y de código abierto**, creada con fines educativos y para demostrar el uso de tecnologías web modernas.  
+Este proyecto fue creado como una herramienta **independiente**, con fines **educativos** y para demostrar el uso de **tecnologías web modernas**.
 
-Para cualquier trámite oficial, gestión de cuenta o inconvenientes con tu **Panapass**, por favor, contacta directamente con los canales oficiales de atención al cliente de **Panapass**.  
+## Estado del Proyecto
+
+- La versión original de PanaSaldo fue **de código abierto**, pero **ya no recibe mantenimiento ni actualizaciones**.
+- Es **muy probable que dicha versión antigua se encuentre fuera de funcionamiento** o deje de funcionar en cualquier momento.
+- La **versión actual de PanaSaldo** ha pasado a ser de **código privado**.
+- La **nueva versión de la aplicación Android** también es de **código privado**.
+
+## Contenido de este Repositorio
+
+- Este repositorio **NO contiene el código fuente** de la versión actual.
+- **Únicamente se incluye**:
+  - El **APK de la versión nueva** de la aplicación Android.
+  - El **URL de acceso a la versión nueva** de la plataforma.
+
+## Importante
+
+Para cualquier trámite oficial, gestión de cuenta o inconvenientes con tu **Panapass**, por favor contacta directamente con los **canales oficiales de atención al cliente de Panapass**.
+
+Este repositorio **no reemplaza**, **no está afiliado** ni pretende suplantar los servicios oficiales de **Panapass** o **ENA**.
 
 ## 📸 Screenshot  
 
